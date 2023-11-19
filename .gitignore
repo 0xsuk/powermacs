@@ -1,0 +1,11 @@
+*
+!powermacs.gif
+!readme.md
+!.gitignore
+!init.el
+!lisp/
+!lisp/**/*
+!layouts/
+!layouts/**/*
+!snippets/
+!snippets/**/*

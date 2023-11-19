@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: newsynth
+# key: newsynth
+# --
+(defsynth $1 ((gate 1) (freq 440) (amp 0.5) (pan 0) (out 0)))

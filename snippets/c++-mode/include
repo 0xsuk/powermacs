@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: include
+# key: include
+# --
+#include "`(file-name-nondirectory (file-name-sans-extension (or (buffer-file-name) "")))`$0"
