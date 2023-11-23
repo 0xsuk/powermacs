@@ -18,8 +18,24 @@
                     "~/quicklisp/local-projects/"
                     "~/documents/")
             ))
-  
   (add-to-list 'consult-dir-sources 'my-dirs)
+  
+  (defun get-buffers-major-mode (&optional major-mode-symbol)
+    "Return a list of buffers with the specified major mode."
+    (unless major-mode-symbol
+      (setq major-mode-symbol major-mode))
+    (cl-remove-if-not
+     (lambda (buf)
+       (with-current-buffer buf
+         (eq major-mode major-mode-symbol)))
+     (mapcar 'buffer-name (buffer-list))))
+  
+  (defvar consult--major-mode-buffers
+    `(:name "Major mode buffers"
+            :category buffer
+            :face consult-buffer
+            :items  ,#'get-buffers-major-mode
+            :action ,#'consult--buffer-action))
   
   (defun consult-dir--fasd-dirs ()
 	  (mapcar (lambda (str) (concat str "/")) (split-string (shell-command-to-string "fasd -ld") "\n" t)))

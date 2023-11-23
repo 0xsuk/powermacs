@@ -128,8 +128,9 @@
 	;; "C-." 'counsel-switch-buffer
 
 	;; "C-l" 
-	"C-," 'consult-dir ; TODO do this in consult-buffer
-  "C-<" nil
+	"C-," (lambda () (interactive)
+          (consult-buffer '(consult--major-mode-buffers)))
+  "C-<" 'consult-dir
 	"C-." 'consult-buffer
   "C->" nil
 	"C-x C-o" 'delete-other-windows ; delete-blank-lines
