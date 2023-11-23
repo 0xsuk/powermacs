@@ -3,6 +3,9 @@
 	(consult-customize consult-recent-file consult-buffer consult-ripgrep :preview-key "C-l")
 	)
 
+(use-package consult-lsp
+  )
+
 
 ;;TODO sort dirs by length
 (use-package consult-dir

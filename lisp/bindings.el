@@ -133,6 +133,7 @@
   "C-<" 'consult-dir
 	"C-." 'consult-buffer
   "C->" nil
+  "C-x C-." 'consult-lsp-symbols
 	"C-x C-o" 'delete-other-windows ; delete-blank-lines
 	"C-x C-f" 'projectile-find-file ; find-file use C-;
 	"C-x C-;" 'eval-defun ; bef: comment-line use M-; instead
