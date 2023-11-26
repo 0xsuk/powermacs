@@ -120,8 +120,8 @@
 	"M-s" 'consult-line
 	"M-[" 'backward-sexp ; undefined
 	"M-]" 'forward-sexp ; undefined
-	"<C-[>" 'undo-tree-undo ; undefined
-	"C-]" 'undo-tree-redo ; abort-recursive-edit ?? dunno what
+	"C-\"" 'undo-tree-undo ; undefined
+	"<C-[>" 'undo-tree-redo ; abort-recursive-edit ?? dunno what
 	"M-0" nil
 	;;; free keys
 	;; "C-x C-j"  ; use C-j
@@ -130,9 +130,10 @@
 	;; "C-l" 
 	"C-," (lambda () (interactive)
           (consult-buffer '(consult--major-mode-buffers)))
-  "C-<" 'consult-dir
+  "C-`" 'consult-dir
 	"C-." 'consult-buffer
   "C->" nil
+  "C-@" nil
   "C-x C-." 'consult-lsp-symbols
 	"C-x C-o" 'delete-other-windows ; delete-blank-lines
 	"C-x C-f" 'projectile-find-file ; find-file use C-;
@@ -154,9 +155,10 @@
 	"M-a" nil ; bef: backward-sentence
 	"M-p" 'backward-sexp
 	"M-n" 'forward-sexp ; undefined
-	"C-t" nil ;transpose-chars useless
+	"C-t" (my-l (point-to-register ?@)) ;transpose-chars useless
+  "C-S-t" (my-l (jump-to-register ?@))
 	;; "C-<return>" nil ; undefined
-	"C-@" 'popper-toggle-latest
+	"C-(" 'popper-toggle-latest
   "C-:" 'completion-at-point
 	"C-*" 'cape-dabbrev; undefined
 	"C-^" 'my-max-popper-window ; undefined~~^^^^^^^^^
