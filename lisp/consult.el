@@ -4,6 +4,11 @@
 	)
 
 (use-package consult-lsp
+  :after lsp
+  )
+
+(use-package consult-eglot
+  :after eglot
   )
 
 
