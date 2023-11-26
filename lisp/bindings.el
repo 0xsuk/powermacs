@@ -25,9 +25,9 @@
     "@" (my-l)
     "[" (my-l)
 		"a" (my-l (insert "&")) ; pointer
-		"s" (my-l (insert "\"\"") (backward-char))
+		"s" (my-l (insert "<"))
 		"d" (my-l (end-of-line) (insert ";"))
-		"f" (my-l (insert "()") (backward-char))
+		"f" (my-l (insert ">"))
 		"g" (my-l (insert " = "))
     ;; "h" (my-l (end-of-line) (insert ";"))
 		"j" (my-l (insert "_"))
@@ -130,7 +130,7 @@
 	;; "C-l" 
 	"C-," (lambda () (interactive)
           (consult-buffer '(consult--major-mode-buffers)))
-  "C-`" 'consult-dir
+  "C-<" 'consult-dir
 	"C-." 'consult-buffer
   "C->" nil
   "C-@" nil
