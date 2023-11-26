@@ -56,8 +56,8 @@
    '(";" . meow-reverse) ; ;x to move to the beginning of line
    '("," . meow-inner-of-thing)
    '("." . meow-bounds-of-thing)
-   '("[" . meow-beginning-of-thing)
-   '("]" . meow-end-of-thing)
+   '("\"" . meow-beginning-of-thing)
+   '("[" . meow-end-of-thing)
    '("a" . meow-append)
    '("A" . meow-open-below)
    '("b" . backward-word)
@@ -103,7 +103,7 @@
    '("U" . meow-undo-in-selection) ; no difference with C-/
    '("v" . meow-mark-point)
    '("w" . meow-mark-word)
-	 '("@" . meow-mark-symbol)
+	 '("(" . meow-mark-symbol)
    '("x" . meow-line)
    '("X" . meow-line-expand) ; TODO not expected behaviour
    '("y" . meow-save) ; C-w
