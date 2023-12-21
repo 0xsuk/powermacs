@@ -87,6 +87,15 @@
 	:hook (prog-mode . yas-minor-mode)
 	:config
 	(yas-reload-all)
+  (general-def yas-minor-mode-map
+    "<tab>" nil
+    "TAB" nil
+    "C-<tab>" 'yas-next-field-or-maybe-expand
+    "C-<iso-lefttab>" 'yas-prev-field)
+  (general-def yas-keymap
+    "<tab>" nil
+    "TAB" nil
+    "S-<tab>" nil)
 	)
 
 (use-package avy

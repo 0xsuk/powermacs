@@ -73,9 +73,5 @@
   (define-key input-decode-map [?\C-\[] (kbd "<C-[>")) ; https://emacs.stackexchange.com/questions/10271/how-to-bind-c-for-real-seriously-for-real-this-time
   )
 (fix-bindings)
-(defun my-window-transparent ()
-  (interactive)
-  (set-frame-parameter (selected-frame) 'alpha-background 70)
-  ;; (add-to-list 'default-frame-alist '(alpha-background . 70))
-  )
+(my-window-transparent)
 (message "INIT COMPLETE")
