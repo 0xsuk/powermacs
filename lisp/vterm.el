@@ -31,7 +31,7 @@
 		(vterm-send-string
 		 (completing-read "Files: " (split-string (shell-command-to-string "compgen -f") "\n" t ))))
 	(general-def vterm-copy-mode-map
-		"C-c C-c" 'vterm-narrow-to-output
+		"C-c C-w" 'vterm-narrow-to-output
 		)
 	(general-def vterm-mode-map
 		"C-c C-h" (my-l (vterm-send-string "cd ..\n"))
