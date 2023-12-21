@@ -67,11 +67,15 @@
 	(my-load-file "eaf.el"))
 ;; (my-load-file "supercollider.el")
 
-(setq gc-cons-threshold (* 2 1000 1000))
 (defun fix-bindings ()
   (interactive)
   (define-key input-decode-map "\C-i" [C-i]) ; https://emacs.stackexchange.com/questions/17509/how-to-distinguish-c-i-from-tab
   (define-key input-decode-map [?\C-\[] (kbd "<C-[>")) ; https://emacs.stackexchange.com/questions/10271/how-to-bind-c-for-real-seriously-for-real-this-time
   )
 (fix-bindings)
+(defun my-window-transparent ()
+  (interactive)
+  (set-frame-parameter (selected-frame) 'alpha-background 70)
+  ;; (add-to-list 'default-frame-alist '(alpha-background . 70))
+  )
 (message "INIT COMPLETE")

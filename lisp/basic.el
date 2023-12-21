@@ -35,7 +35,7 @@
  warning-minimum-level :emergency
  inhibit-startup-message t
  ;; Maintainer: My suggestion is to repeatedly multiply gc-cons-threshold by 2 until you stop seeing significant improvements in responsiveness, and in any case not to increase by a factor larger than 100 or somesuch. If even a 100-fold increase doesn't help, there's some deeper problem with the Lisp code which produces so much garbage, or maybe GC is not the reason for slowdown.
- gc-cons-threshold (* 50 1000 1000) ; should be lowered after initialization
+ gc-cons-threshold (* 1000 1000 1000) ; should be lowered after initialization?
  ;; gc-cons-threshold 100000000 ; lsp performance https://emacs-lsp.github.io/lsp-mode/page/performance/
  read-process-output-max (* 1024 1024) ; same
  scroll-conservatively 1
@@ -53,7 +53,7 @@
  kill-buffer-query-functions
  (remq 'process-kill-buffer-query-function
 			 kill-buffer-query-functions) ; kill live process without asking when buffer is closing
- scroll-preserve-screen-position t
+ scroll-preserve-screen-position 'always
  ;; switch-to-buffer-obey-display-actions t ; treats manual buffer switching the same as programatic switching
  switch-to-buffer-in-dedicated-window nil ; disallow switching in the dedicated
  window-sides-slots '(1 1 1 1) ; number of side windows allowed on each side
@@ -84,8 +84,6 @@
 ;; (setq show-paren-delay 0.1)
 (global-display-line-numbers-mode 0)
 (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
-(set-frame-parameter nil 'alpha-background 70)
-(add-to-list 'default-frame-alist '(alpha-background . 70))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 ; no need for this on bash ;; (setq shell-command-switch "-ic") ; allows zsh alias
 (put 'narrow-to-region 'disabled nil)
@@ -96,3 +94,15 @@
     (let ((dir (file-name-directory filename)))
       (unless (file-exists-p dir)
         (make-directory dir t)))))
+
+(defmacro k-time (&rest body)
+  "Measure and return the time it takes evaluating BODY."
+  `(let ((time (current-time)))
+     ,@body
+     (float-time (time-since time))))
+
+(defvar k-gc-timer
+  (run-with-idle-timer 15 t
+                       (lambda ()
+                         (message "Garbage Collector has run for %.06fsec"
+                                  (k-time (garbage-collect))))))

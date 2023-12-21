@@ -39,8 +39,11 @@
    '("/" . meow-keypad-describe-key)
    '("?" . meow-cheatsheet))
   (meow-normal-define-key
-	 '("N" . my-next-defun)
-	 '("P" . beginning-of-defun)
+	 '("n" . my-next-defun)
+	 '("p" . beginning-of-defun)
+   '("N" . my-scroll-super-down)
+	 '("P" . my-scroll-super-up)
+   '("y" . meow-yank)
 	 '("|" . meow-motion-mode)
    '("0" . meow-expand-0)
    '("9" . meow-expand-9)
@@ -56,8 +59,8 @@
    '(";" . meow-reverse) ; ;x to move to the beginning of line
    '("," . meow-inner-of-thing)
    '("." . meow-bounds-of-thing)
-   '("\"" . meow-beginning-of-thing)
-   '("[" . meow-end-of-thing)
+   '("[" . meow-beginning-of-thing)
+   '("\"" . meow-end-of-thing)
    '("a" . meow-append)
    '("A" . meow-open-below)
    '("b" . backward-word)
@@ -86,10 +89,9 @@
    '("l" . meow-right)
    '("L" . meow-right-expand)
    '("m" . meow-join)
-   '("n" . meow-search)
    '("o" . meow-block) ; go to matching paren
    '("O" . meow-to-block)
-   '("p" . meow-yank) ; paste
+   ;; '("p" . meow-yank) ; paste
 	 ;; '("P" . meow-clipboard-yank)
    ;; '("q" . meow-quit)
    '("q" . quit-window)
@@ -99,14 +101,14 @@
    '("s" . meow-kill)
    '("t" . meow-till)
    ;; '("u" . meow-undo)
-	 '("u" . meow-clipboard-save)
+	 ;; '("u" . meow-clipboard-save)
    '("U" . meow-undo-in-selection) ; no difference with C-/
    '("v" . meow-mark-point)
    '("w" . meow-mark-word)
 	 '("(" . meow-mark-symbol)
    '("x" . meow-line)
    '("X" . meow-line-expand) ; TODO not expected behaviour
-   '("y" . meow-save) ; C-w
+   '("u" . meow-save) ; C-w
    '("Y" . meow-sync-grab)
    '("z" . meow-pop-selection)
 	 '("?" . repeat)
