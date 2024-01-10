@@ -119,7 +119,7 @@
 	;; "M-s" 'swiper ; bef : some prefix
 	"M-s" 'consult-line
 	"M-[" 'backward-sexp ; undefined
-	"M-]" 'forward-sexp ; undefined
+	"M-\"" 'forward-sexp ; undefined
 	"C-\"" 'undo-tree-redo ; abort-recursive-edit ?? dunno what
 	"<C-[>" 'undo-tree-undo ; undefined
 	"M-0" nil

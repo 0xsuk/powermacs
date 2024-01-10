@@ -12,8 +12,8 @@
   :init
   (setq lsp-signature-auto-activate nil)
   (setq lsp-signature-render-documentation nil)
-  (setq lsp-eldoc-hook nil
-				lsp-eldoc-enable-hover nil) ; do not display symbol info at the bottom
+  ;; (setq lsp-eldoc-hook nil
+				;; lsp-eldoc-enable-hover nil) ; do not display symbol info at the bottom
   (setq lsp-modeline-code-actions-enable nil)
   (setq lsp-modeline-diagnostics-enable nil)
   (setq lsp-headerline-breadcrumb-enable nil)

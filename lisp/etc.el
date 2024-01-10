@@ -90,12 +90,13 @@
   (general-def yas-minor-mode-map
     "<tab>" nil
     "TAB" nil
+    "<backtab>" 'yas-expand
     "C-<tab>" 'yas-next-field-or-maybe-expand
     "C-<iso-lefttab>" 'yas-prev-field)
   (general-def yas-keymap
     "<tab>" nil
     "TAB" nil
-    "S-<tab>" nil)
+    "<backtab>" 'yas-expand)
 	)
 
 (use-package avy
