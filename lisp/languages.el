@@ -121,5 +121,7 @@
 	)
 
 (general-def c-mode-base-map
-	  ";" nil
-	  )
+	";" nil
+	)
+
+(c-set-offset 'innamespace 0)

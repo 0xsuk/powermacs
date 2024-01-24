@@ -82,6 +82,7 @@
 (electric-pair-mode t) ; auto close parentheses
 (show-paren-mode -1) ; colorize matching parenthesis under cursor
 ;; (setq show-paren-delay 0.1)
+(global-tab-line-mode 1)
 (global-display-line-numbers-mode 0)
 (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
