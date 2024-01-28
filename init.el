@@ -56,6 +56,7 @@
 (my-load-file "pdf.el")
 (my-load-file "org.el")
 ;; (my-load-file "tabline.el")
+(my-load-file "centaur.el")
 (my-load-file "vterm.el")
 ;; (my-load-file "term-keys.el")
 ;;(my-load-file "kakoune.el")

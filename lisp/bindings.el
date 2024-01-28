@@ -122,7 +122,6 @@
 	"M-\"" 'forward-sexp ; undefined
 	"C-\"" 'undo-tree-redo ; abort-recursive-edit ?? dunno what
 	"<C-[>" 'undo-tree-undo ; undefined
-	"M-0" nil
 	;;; free keys
 	;; "C-x C-j"  ; use C-j
 	;; "C-." 'counsel-switch-buffer
@@ -155,8 +154,8 @@
 	"M-a" nil ; bef: backward-sentence
 	"M-p" nil
 	"M-n" nil ; undefined
-  "M-0" 'tab-line-switch-to-next-tab
-  "M-9" 'tab-line-switch-to-prev-tab
+  "M-0" 'centaur-tabs-forward
+  "M-9" 'centaur-tabs-backward
 	"C-t" (my-l (point-to-register ?@)) ;transpose-chars useless
   "C-S-t" (my-l (jump-to-register ?@))
 	;; "C-<return>" nil ; undefined

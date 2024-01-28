@@ -12,7 +12,7 @@
 (defun my-want-key-p (key mods)
   t)
 
-(use-package :term-keys
+(use-package term-keys
   :quelpa (term-keys :fetcher github :repo "CyberShadow/term-keys")
   :config
   (term-keys-mode t)
