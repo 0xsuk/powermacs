@@ -1,4 +1,5 @@
 (use-package fuel
+  :defer t
   :quelpa (fuel :fetcher github :repo "mcandre/fuel" :files ("fuel-1.0/*"))
   :config
   (setq fuel-listener-factor-binary "~/inst/factor/factor"

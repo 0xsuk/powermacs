@@ -12,7 +12,7 @@
   :defer 1
 	:config
 	; https://www.reddit.com/r/emacs/comments/ovkyov/vterm_completion_for_files_directories_command/
-  (setq vterm-timer-delay 0.01) ; snappy!
+  (setq vterm-timer-delay nil) ; snappy!
 	(defun my-vterm-history ()
 		(interactive)
 		(vterm-send-string
@@ -46,8 +46,8 @@
     "C-l" nil
 		; in vterm mark commands do not work
 		"M-l" nil
-    "M-p" nil
-    "M-n" nil
+    "M-9" nil
+    "M-0" nil
 		"M-h" nil
 		"M-j" nil
 		"M-k" nil

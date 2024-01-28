@@ -153,8 +153,10 @@
 	"M-t" nil ; bef:transpose-word
 	"M-v" 'paredit-forward-down ; scroll-down-command useless
 	"M-a" nil ; bef: backward-sentence
-	"M-p" 'tab-line-switch-to-prev-tab
-	"M-n" 'tab-line-switch-to-next-tab ; undefined
+	"M-p" nil
+	"M-n" nil ; undefined
+  "M-0" 'tab-line-switch-to-next-tab
+  "M-9" 'tab-line-switch-to-prev-tab
 	"C-t" (my-l (point-to-register ?@)) ;transpose-chars useless
   "C-S-t" (my-l (jump-to-register ?@))
 	;; "C-<return>" nil ; undefined
