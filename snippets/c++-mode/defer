@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: defer
+# key: defer
+# --
+template <typename T>
+class Defer {
+  T f;
+public:
+  Defer(T&& f_) : f(std::forward<T>(f_)) {}
+  ~Defer(){ f(); }
+};
+#define CONCATINATE_(x,y) x ## y
+#define CONCATINATE(x,y) CONCATINATE_(x, y)
+#define defer Defer CONCATINATE(__defer__,__LINE__)=

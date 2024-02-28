@@ -4,43 +4,45 @@
 	)
 
 (general-def 'global
+  "C-o" 'my-insert-curly-brackets-at-end
   "C-a" 'crux-move-beginning-of-line
-	";"
-	(general-key-dispatch 'self-insert-command
-		;; :timeout 0.35
-		";" (my-l)
-		"e" (my-l (self-insert-command 1 ?\;))
-		"w" (my-l (if (eq major-mode 'python-mode)
-									(progn (insert "''") (backward-char))
-								(insert "'")))
-    "r" (my-l (insert "#"))
-		"t" (my-l (insert "%"))
-    "y" (my-l)
-		"u" (my-l (insert "#'"))
-    "i" (my-l (insert "**") (backward-char 1)
-                                        ; bind next insertion of "space" to forward-char
-              )
-    "o" (my-l)
-    "p" (my-l)
-    "@" (my-l)
-    "[" (my-l)
-		"a" (my-l (insert "&")) ; pointer
-		"s" (my-l (insert "<"))
-		"d" (my-l (end-of-line) (insert ";"))
-		"f" (my-l (insert ">"))
-		"g" (my-l (insert " = "))
-    ;; "h" (my-l (end-of-line) (insert ";"))
-		"j" (my-l (insert "_"))
-    "k" (my-l)
-    "l" (my-l (insert "(lambda ())") (backward-char 2))
-    "z" (my-l)
-    "x" (my-l)
-		"c" 'my-insert-curly-brackets-at-end
-    "v" (my-l (insert "->"))
-    "b" (my-l)
-    "n" (my-l (insert "#'"))
-    "m" 'my-insert-dot
-		)
+	";" 'self-insert-command
+  "C--" (my-l (insert "->"))
+	;; (general-key-dispatch 'self-insert-command
+	;; 	;; :timeout 0.35
+	;; 	";" (my-l)
+	;; 	"e" (my-l (self-insert-command 1 ?\;))
+	;; 	"w" (my-l (if (eq major-mode 'python-mode)
+	;; 								(progn (insert "''") (backward-char))
+	;; 							(insert "'")))
+  ;;   "r" (my-l (insert "#"))
+	;; 	"t" (my-l (insert "%"))
+  ;;   "y" (my-l)
+	;; 	"u" (my-l (insert "#'"))
+  ;;   "i" (my-l (insert "**") (backward-char 1)
+  ;;                                       ; bind next insertion of "space" to forward-char
+  ;;             )
+  ;;   "o" (my-l)
+  ;;   "p" (my-l)
+  ;;   "@" (my-l)
+  ;;   "[" (my-l)
+	;; 	"a" (my-l (insert "&")) ; pointer
+	;; 	"s" (my-l (insert "<"))
+	;; 	"d" (my-l (end-of-line) (insert ";"))
+	;; 	"f" (my-l (insert ">"))
+	;; 	"g" (my-l (insert " = "))
+  ;;   ;; "h" (my-l (end-of-line) (insert ";"))
+	;; 	"j" (my-l (insert "_"))
+  ;;   "k" (my-l)
+  ;;   "l" (my-l (insert "(lambda ())") (backward-char 2))
+  ;;   "z" (my-l)
+  ;;   "x" (my-l)
+	;; 	"c" 'my-insert-curly-brackets-at-end
+  ;;   "v" (my-l (insert "->"))
+  ;;   "b" (my-l)
+  ;;   "n" (my-l (insert "#'"))
+  ;;   "m" 'my-insert-dot
+	;; 	)
 	;; "/" (general-key-dispatch 'self-insert-command
 				;; "a" (my-l (self-insert-command 1 ?A))
 				;; "b" (my-l (self-insert-command 1 ?B))
@@ -178,13 +180,13 @@
   "C-S-r" 'consult-register
   "C-S-j" (my-l (text-scale-increase 1))
   "C-S-k" (my-l (text-scale-decrease 1))
-  "C-S-l" (my-l (text-scale-increase 0))
 	)
 
 (general-create-definer leader-spc
   :prefix "<f12>")
 (leader-spc
 	:keymaps 'global
+  "w" 'golden-ratio-mode
   "c" 'corfu-mode
 	"p" 'popper-mode
 	"C" 'centered-window-mode

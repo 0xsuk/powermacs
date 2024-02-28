@@ -6,6 +6,8 @@
   (setq centaur-tabs-set-close-button nil)
   (setq centaur-tabs-set-close-button nil)
   (setq centaur-tabs-cycle-scope 'tabs)
+  (setq centaur-tabs-adjust-buffer-order t)
+  (centaur-tabs-enable-buffer-reordering)
   (defun centaur-tabs-buffer-groups ()
     (list
      (cond
