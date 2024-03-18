@@ -11,7 +11,7 @@
 					eshell-mode
 					"^\\*eshell.*\\*$"
 					vterm-mode
-					"^\\*vterm.*\\*$"
+					"^\\*vterminal.*\\*$"
 					shell-mode
 					"^\\*shell.*\\*$"
 					;; dired-mode

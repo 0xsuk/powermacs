@@ -194,7 +194,7 @@
 	"bi" (my-l (find-file "~/.emacs.d/init.el"))
 	"bs" (my-l (switch-to-buffer "*scratch*"))
 	"bm" (my-l (switch-to-buffer "*Messages*"))
-	"v" 'vterm
+	"v" 'multi-vterm
 	"r" 'consult-ripgrep
 	"j" 'my-split-and-move-down
   "k" 'split-window-below

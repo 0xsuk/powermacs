@@ -95,7 +95,7 @@
 				(eq (char-after (car completion-in-region--data)) ?:)))
 	(defun my-setup-elisp ()
 		(setq-local completion-at-point-functions
-								`(,(cape-super-capf
+								`(,(cape-capf-super
 										(cape-capf-predicate
 										 #'elisp-completion-at-point
 										 #'my-ignore-elisp-keywords)

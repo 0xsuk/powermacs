@@ -123,7 +123,31 @@
 		)
 	)
 
+(defun vterm-find-some ()
+  (cl-loop for buf in (buffer-list)
+           if (with-current-buffer buf
+                (eq major-mode 'vterm-mode))
+           return buf))
 
-;; (use-package multi-vterm
-  ;; :config
-;; ) ; always creates new even when one is avaiable
+;; Use `pop-to-buffer' instead of `switch-to-buffer'
+(defun my-multi-vterm ()
+  "Create new vterm buffer."
+  (interactive)
+  (if (or (eq multi-vterm-buffer-list nil) (eq major-mode 'vterm-mode))
+      ;;create new buffer
+      (let ((vterm-buffer (multi-vterm-get-buffer)))
+        (setq multi-vterm-buffer-list
+              (nconc multi-vterm-buffer-list (list vterm-buffer)))
+        (set-buffer vterm-buffer)
+        (multi-vterm-internal)
+        (pop-to-buffer vterm-buffer))
+                                        ; toggle vterm 
+                                        ; find first buffer whose major-mode is vterm and pop-to-buffer
+                                        ; write here
+    (pop-to-buffer (vterm-find-some))
+    ))
+
+(use-package multi-vterm
+  :config
+  (advice-add #'multi-vterm :override #'my-multi-vterm)
+) ; always creates new even when one is avaiable
