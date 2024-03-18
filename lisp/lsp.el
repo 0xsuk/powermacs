@@ -36,8 +36,11 @@
   (lsp-enable-which-key-integration t)
 
 	; clangd
-	; install binary https://github.com/clangd/clangd/releases/download/16.0.2/clangd-linux-16.0.2.zip
-	; !!important: old version causes "Marker does not point anywhere" error
+  ;; https://stackoverflow.com/questions/26333823/clang-doesnt-see-basic-headers/29821538#29821538
+	; [obsolete] ;; install binary https://github.com/clangd/clangd/releases/download/16.0.2/clangd-linux-16.0.2.zip
+	; [obsolete] ;; !!important: old version causes "Marker does not point anywhere" error
+  ;; (setq lsp-clangd-version "16.0.2")
+  ;; (setq lsp-clangd-binary-path "/usr/local/bin/clangd")
 	(setq lsp-clients-clangd-args '("-j=4" "-background-index" "--header-insertion=never" "--header-insertion-decorators=0" "-log=error")) ; https://github.com/emacs-lsp/lsp-mode/issues/2503
 	;(setq lsp-clients-clangd-args '("--header-insertion-decorators=0")) ; with this and compile_commands.json, clangd will insert proper path but manual insertion is better
 	;(delete 'company-clang company-backends) ; Experiment:=> DO NOT DO THIS. every feature is powered by company-clang

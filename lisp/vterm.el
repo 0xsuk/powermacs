@@ -148,6 +148,7 @@
     ))
 
 (use-package multi-vterm
+  :after vterm
   :config
   (advice-add #'multi-vterm :override #'my-multi-vterm)
 ) ; always creates new even when one is avaiable
