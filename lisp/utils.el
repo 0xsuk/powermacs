@@ -10,17 +10,32 @@
   "Initialize Common Lisp Project."
   (interactive "sName: ")
   (with-temp-file (expand-file-name "load.lisp")
-    (insert "(pushnew (uiop:getcwd) ql:*local-project-directories*)
-(ql:quickload )
-(asdf:load-system )"))
+    (insert
+     (format "(pushnew (uiop:getcwd) ql:*local-project-directories*)
+(ql:quickload :%s)
+(asdf:load-system :%s)" name name)))
   (with-temp-file (expand-file-name (format "%s.lisp" name))
+    (insert
+     (format "(in-package :%s)" name)))
+  (with-temp-file (expand-file-name "package.lisp")
+    (insert
+     (format "(defpackage :%s
+  (:use
+   :cl))
+" name)))
+  (with-temp-file (expand-file-name (format "%s.asd" name))
     (insert
      (format "(asdf:defsystem :%s
   :name \"%s\"
+  :author \"0xsuk\"
   :depends-on ()
   :serial t
-  :components ())" name name)))
+  :components (
+               (:file \"package\")
+               (:file \"%s\"))
   )
+" name name name))))
+
 (defmacro with-current-dir (dir &rest body)
   `(let ((default-directory ,dir))
      ,@body))
