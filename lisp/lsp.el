@@ -36,6 +36,7 @@
   (lsp-enable-which-key-integration t)
 
 	; clangd
+  ; you might need to install libstdc++-12-dev for clangd to find header files
   ;; https://stackoverflow.com/questions/26333823/clang-doesnt-see-basic-headers/29821538#29821538
 	; [obsolete] ;; install binary https://github.com/clangd/clangd/releases/download/16.0.2/clangd-linux-16.0.2.zip
 	; [obsolete] ;; !!important: old version causes "Marker does not point anywhere" error

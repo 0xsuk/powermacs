@@ -53,7 +53,7 @@
 (my-load-file "prescient.el")
 (my-load-file "meow.el")
 ;; (my-load-file "ryo.el")
-(my-load-file "pdf.el")
+;; (my-load-file "pdf.el")
 (my-load-file "org.el")
 ;; (my-load-file "tabline.el")
 (my-load-file "centaur.el")
@@ -65,8 +65,8 @@
 ;; (my-load-file "mymode.el")
 ;; (my-load-file "tmp.el")
 (my-load-file "japanese.el")
-(unless islaptop
-	(my-load-file "eaf.el"))
+;; (unless islaptop
+;; 	(my-load-file "eaf.el"))
 ;; (my-load-file "supercollider.el")
 
 (defun fix-bindings ()
