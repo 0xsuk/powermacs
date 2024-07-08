@@ -1,7 +1,7 @@
-;; (use-package golden-ratio
-  ;; :config
+(use-package golden-ratio
+  :config
   ;; (golden-ratio-mode)
-  ;; )
+  )
 
 ; M-x esup
 (use-package esup)

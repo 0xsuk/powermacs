@@ -15,9 +15,38 @@ folder, otherwise delete a character backward"
   (kill-line 1)
   (insert "~/"))
 
+(defvar-local myvertico-index 0) ;used to prevent group cycling
+(defvar myvertico-cycle-group nil)
+(defun out-of-list (n list)
+  (if (or (< n 0) (>= n (length list)))
+      t
+    nil)
+  )
 (use-package vertico
   :config
-  (setq vertico-count 10)
+  (defun vertico-next-group (&optional n)
+    "Cycle N groups forward.
+When the prefix argument is 0, the group order is reset."
+    (interactive "p")
+    (let ((next-index (+ myvertico-index n)))
+      (when (cdr vertico--groups)
+        (if (setq vertico--lock-groups (not (eq n 0)))
+            (setq vertico--groups (vertico--cycle vertico--groups
+                                                  (if (and (not myvertico-cycle-group) (out-of-list next-index vertico--groups))
+                                                      0
+                                                    (let ((len (length vertico--groups)))
+                                                      (setq myvertico-index next-index)
+                                                      (- len (mod (- n) len))
+                                                      )))
+                  vertico--all-groups (vertico--cycle vertico--all-groups
+                                                      (seq-position vertico--all-groups
+                                                                    (car vertico--groups))))
+          (setq vertico--groups nil
+                vertico--all-groups nil))
+        (setq vertico--lock-candidate nil
+              vertico--input nil)))
+    (setq vertico-count 10))
+  
 	(general-def vertico-map
 		"C-<backspace>" 'dw/minibuffer-backward-kill
     "M-h" 'vertico-go-home
