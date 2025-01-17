@@ -44,8 +44,9 @@ When the prefix argument is 0, the group order is reset."
           (setq vertico--groups nil
                 vertico--all-groups nil))
         (setq vertico--lock-candidate nil
-              vertico--input nil)))
-    (setq vertico-count 10))
+              vertico--input nil))))
+  
+  (setq vertico-count 15)
   
 	(general-def vertico-map
 		"C-<backspace>" 'dw/minibuffer-backward-kill

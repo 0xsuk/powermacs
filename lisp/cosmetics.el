@@ -20,9 +20,9 @@
 	;; (setq dimmer-percent 0.4)
 	;; (dimmer-mode))
 
-;; (use-package gruber-darker-theme
-;; 	:config
-;; 	(load-theme 'gruber-darker))
+(use-package gruber-darker-theme
+	:config
+	(load-theme 'gruber-darker))
 
 ;; (use-package doom-themes
 ;;   ;; doom-feather-dark
@@ -33,18 +33,18 @@
 ;; 	(setq ring-bell-function 'doom-themes-visual-bell-fn) ; beep!
 ;;   )
 
-;; (use-package nyan-mode
-	;; :config
-	;; (nyan-mode)
-	;; (setq nyan-animate-nyancat t
-				;; nyan-bar-length 16)
-;; )
-
-(use-package ef-themes
+(use-package nyan-mode
 	:config
-	(load-theme (if islaptop 'ef-frost 'ef-dark))
-	(setq ef-themes-to-toggle '(ef-frost ef-dark))
-	)
+	(nyan-mode)
+	(setq nyan-animate-nyancat t
+				nyan-bar-length 16)
+)
+
+;; (use-package ef-themes
+;; 	:config
+;; 	(load-theme (if islaptop 'ef-frost 'ef-dark))
+;; 	(setq ef-themes-to-toggle '(ef-frost ef-dark))
+;; 	)
 ;; (use-package twilight-anti-bright-theme
 	;; :config
 	;; (load-theme 'twilight-anti-bright)
@@ -53,9 +53,9 @@
 
 
 ; workspace
-;; (use-package perspective
-	;; :init
-	;; (persp-mode))
+(use-package perspective
+	:init
+	(persp-mode))
 
 ;; (use-package tao-theme
 ;; 	:init

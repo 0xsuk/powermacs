@@ -10,5 +10,6 @@
 	;; 	"C-j" nil
 	;; 	"C-k" nil)
 	(add-hook 'git-commit-setup-hook (my-l (setq-local cape-dabbrev-check-other-buffers t)))
+  (setq magit-log-section-commit-count 20)
 	
   )

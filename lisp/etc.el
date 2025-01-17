@@ -62,7 +62,15 @@
   :defer 1
 	:init
 	(global-flycheck-mode)
-	(setq flycheck-display-errors-delay 0.5))
+	(setq flycheck-display-errors-delay 0.5)
+
+
+  (general-def flycheck-mode-map
+    "C-c n" 'flycheck-next-error
+    "C-c p" 'flycheck-previous-error
+    "C-c l" 'flycheck-list-errors
+    )
+  )
 
 (use-package command-stats
   :quelpa (command-stats :fetcher github :repo "0xsuk/command-stats.el"))

@@ -135,6 +135,7 @@
 	"C-." 'consult-buffer
   "C->" nil
   "C-@" nil
+  "C-x m" 'revert-buffer
   "C-x C-." 'consult-lsp-symbols
 	"C-x C-o" 'delete-other-windows ; delete-blank-lines
 	"C-x C-f" 'projectile-find-file ; find-file use C-;
