@@ -148,3 +148,5 @@
    ;; ("<mouse-5>"     . inertias-up-wheel  ) ;; Replace mwheel-scroll
    ;; ("<wheel-up>"    . inertias-down-wheel)
    ;; ("<wheel-down>"  . inertias-up-wheel  )))
+
+(use-package restclient)

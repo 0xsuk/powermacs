@@ -143,7 +143,7 @@
 	"C-x C-u" 'delete-frame ; bef:upcase-region, use M-u
 	"C-x d" 'paredit-splice-sexp ; dired use dired-jump instead
 	"C-x i" 'make-frame ; insert-file (inserts content of file)
-	"C-x C-SPC" nil ; pop-global-mark ; same as C-x C-@
+	"C-x C-SPC" 'restclient-mode ; pop-global-mark ; same as C-x C-@
 	"C-x C-n" 'my-max-popper-window ; set-goal-column no use probably
 	;; "C-x o" nil ; other-window useless ; save in case M-<> overriden
 	"M-g c" nil ; bef:goto-char useless
