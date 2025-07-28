@@ -150,3 +150,8 @@
    ;; ("<wheel-down>"  . inertias-up-wheel  )))
 
 (use-package restclient)
+
+
+(use-package glsl-mode
+  :defer t
+  :ensure t)
