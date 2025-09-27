@@ -22,7 +22,6 @@
 	(load (concat user-emacs-directory "lisp/" filename)))
 (my-load-file "utils.el")
 (my-load-file "basic.el")
-(my-load-file "bindings.el")
 (my-load-file "cosmetics.el")
 (my-load-file "etc.el")
 ;; (my-load-file "exwm.el")
@@ -68,6 +67,7 @@
 ;; (unless islaptop
 ;; 	(my-load-file "eaf.el"))
 ;; (my-load-file "supercollider.el")
+(my-load-file "bindings.el")
 
 (defun fix-bindings ()
   (interactive)

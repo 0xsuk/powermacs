@@ -3,6 +3,18 @@
 	(general-override-mode)
 	)
 
+(general-def
+  :keymaps 'general-override-mode-map
+	"M-l" 'windmove-right ; downcase word
+	"M-h" 'windmove-left ; mark-paragraph
+	"M-j" 'windmove-down ; default-indent-new-line
+	"M-k" 'windmove-up ;kill-sentence
+	"M-q" 'kill-current-buffer ; bef:kill-paragraph
+	"M-s" 'consult-line
+  "M-0" 'centaur-tabs-forward
+  "M-9" 'centaur-tabs-backward
+  )
+
 (general-def 'global
   "C-o" 'my-insert-curly-brackets-at-end
   "C-a" 'crux-move-beginning-of-line
@@ -112,14 +124,10 @@
 	"M-i" 'paredit-forward-slurp-sexp ; tab-to-tab-stop
 	"TAB" 'indent-for-tab-command ; has to be re-bound because of C-i
 	"C-q" 'pop-to-mark-command ;quoted-insert, not used freq
-	"M-l" 'windmove-right ; downcase word
-	"M-h" 'windmove-left ; mark-paragraph
-	"M-j" 'windmove-down ; default-indent-new-line
-	"M-k" 'windmove-up ;kill-sentence
-	"M-q" 'kill-current-buffer ; bef:kill-paragraph
+
 	;; "M-y" 'counsel-yank-pop
 	;; "M-s" 'swiper ; bef : some prefix
-	"M-s" 'consult-line
+
 	"M-[" 'backward-sexp ; undefined
 	"M-\"" 'forward-sexp ; undefined
 	"C-\"" 'undo-tree-redo ; abort-recursive-edit ?? dunno what
@@ -157,8 +165,7 @@
 	"M-a" nil ; bef: backward-sentence
 	"M-p" nil
 	"M-n" nil ; undefined
-  "M-0" 'centaur-tabs-forward
-  "M-9" 'centaur-tabs-backward
+
 	"C-t" (my-l (point-to-register ?@)) ;transpose-chars useless
   "C-S-t" (my-l (jump-to-register ?@))
 	;; "C-<return>" nil ; undefined
