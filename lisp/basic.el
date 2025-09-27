@@ -106,3 +106,25 @@
                        (lambda ()
                          (message "Garbage Collector has run for %.06fsec"
                                   (k-time (garbage-collect))))))
+
+
+(defun my-emacs-process-count ()
+  "現在動作している emacs プロセス数を返す。"
+  (string-to-number
+   (shell-command-to-string "pgrep -c emacs")))
+
+(defun my-emacs-multi-warning ()
+  "Emacs プロセスが複数動いていたら mode-line に警告を表示する。"
+  (let ((count (my-emacs-process-count)))
+    (if (> count 1) ;; 2以上のときだけ表示
+        (propertize (format " ⚠Emacs×%d " count)
+                    'face '(:foreground "red" :weight bold))
+      "")))
+
+;; mode-line に追加
+(setq global-mode-string
+      (append global-mode-string
+              '((:eval (my-emacs-multi-warning)))))
+
+;; 定期更新（30秒ごとに再評価）
+(run-at-time nil 30 (lambda () (force-mode-line-update t)))

@@ -20,18 +20,18 @@
 	;; (setq dimmer-percent 0.4)
 	;; (dimmer-mode))
 
-(use-package gruber-darker-theme
-	:config
-	(load-theme 'gruber-darker))
+;; (use-package gruber-darker-theme
+;; 	:config
+;; 	(load-theme 'gruber-darker))
 
-;; (use-package doom-themes
-;;   ;; doom-feather-dark
-;;   ;; doom-monokai-machine
-;;   :config
-;;   ;; (load-theme 'doom-feather-dark)
-;; 	;; (load-theme 'doom-monokai-machine)
-;; 	(setq ring-bell-function 'doom-themes-visual-bell-fn) ; beep!
-;;   )
+(use-package doom-themes
+  ;; doom-feather-dark
+  ;; doom-monokai-machine
+  :config
+  ;; (load-theme 'doom-feather-light)
+	(load-theme 'doom-monokai-machine)
+	(setq ring-bell-function 'doom-themes-visual-bell-fn) ; beep!
+  )
 
 (use-package nyan-mode
 	:config

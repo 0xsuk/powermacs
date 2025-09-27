@@ -11,6 +11,7 @@
 	(lsp-completion-provider :none) ; we use corfu
   :init
   (setq lsp-signature-auto-activate nil)
+  (setq lsp-auto-guess-root t)
   (setq lsp-signature-render-documentation nil)
   ;; (setq lsp-eldoc-hook nil
 				;; lsp-eldoc-enable-hover nil) ; do not display symbol info at the bottom

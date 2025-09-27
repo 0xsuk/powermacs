@@ -1,5 +1,5 @@
 ; tab line
-(global-tab-line-mode)
+;; (global-tab-line-mode)
 (setq tab-line-close-button-show nil
 			tab-line-new-button-show nil
 			tab-line-left-button nil

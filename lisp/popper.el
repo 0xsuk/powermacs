@@ -7,6 +7,7 @@
 	:config
 	(setq popper-reference-buffers
 				'("\\*Messages\\*"
+          "\\*HTTP Response\\*"
 					"Output\\*$"
 					eshell-mode
 					"^\\*eshell.*\\*$"
