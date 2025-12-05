@@ -55,8 +55,10 @@
   :hook (python-mode . (lambda ()
                           (require 'lsp-pyright)
                           (lsp-deferred)))  ; or lsp-deferred
+  :init
+  (setq lsp-pyright-multi-root nil)
 	:config
-	(setq lsp-pyright-venv-path (concat (getenv "HOME") "/venv/respeaker"))
+	;; (setq lsp-pyright-venv-path "~/code/Cone-of-Silence/.venv2/")
 	(setq python-indent 2)
 	)
 
