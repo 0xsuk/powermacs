@@ -49,27 +49,27 @@
 	;; (remove-hook 'ein:notebook-mode-hook 'setup-ein)
 	)
 
-(use-package lsp-pyright
-  :defer t
-  :ensure t
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-pyright)
-                          (lsp-deferred)))  ; or lsp-deferred
-  :init
-  (setq lsp-pyright-multi-root nil)
-	:config
-	;; (setq lsp-pyright-venv-path "~/code/Cone-of-Silence/.venv2/")
-	(setq python-indent 2)
-	)
+;; (use-package lsp-pyright
+;;   :defer t
+;;   :ensure t
+;;   :hook (python-mode . (lambda ()
+;;                           (require 'lsp-pyright)
+;;                           (lsp-deferred)))  ; or lsp-deferred
+;;   :init
+;;   (setq lsp-pyright-multi-root nil)
+;; 	:config
+;; 	;; (setq lsp-pyright-venv-path "~/code/Cone-of-Silence/.venv2/")
+;; 	(setq python-indent 2)
+;; 	)
 
-(use-package typescript-mode
-  :mode ("\\.ts\\'" "\\.tsx\\'") ;active typescript-mode for .ts
-  :init
-  :hook (typescript-mode . lsp-deferred) ; whenever typescript-mode is activated, call lsp-deferred
-	:custom
-	(typescript-indent-level 2)
-																				;(setq-default js-inden)
-	)
+;; (use-package typescript-mode
+;;   :mode ("\\.ts\\'" "\\.tsx\\'") ;active typescript-mode for .ts
+;;   :init
+;;   :hook (typescript-mode . lsp-deferred) ; whenever typescript-mode is activated, call lsp-deferred
+;; 	:custom
+;; 	(typescript-indent-level 2)
+;; 																				;(setq-default js-inden)
+;; 	)
 (use-package clojure-mode ; https://clojure-lsp.io/clients/#emacs
   :defer t
   )
@@ -77,13 +77,13 @@
   :defer t
   :config
 	)
-(use-package go-mode
-	:hook (go-mode . lsp-deferred))
-(use-package lsp-java
-	:hook (java-mode . lsp-deferred) ; important. otherwise when creating new file (.java), lsp will not be activated
-	:config
-	(setq lsp-java-format-on-type-enabled nil) ; default formatter (eclipse jdtls) forces tab width 4 during typing, so disable this
-	)
+;; (use-package go-mode
+;; 	:hook (go-mode . lsp-deferred))
+;; ;; (use-package lsp-java
+;; ;; 	:hook (java-mode . lsp-deferred) ; important. otherwise when creating new file (.java), lsp will not be activated
+;; ;; 	:config
+;; ;; 	(setq lsp-java-format-on-type-enabled nil) ; default formatter (eclipse jdtls) forces tab width 4 during typing, so disable this
+;; ;; 	)
 (use-package sly
   :quelpa (sly :fetcher github :repo "0xsuk/sly" :files ("*")) ; without * didnt work
   :defer t
