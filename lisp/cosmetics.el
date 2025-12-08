@@ -3,14 +3,18 @@
 	(dashboard-setup-startup-hook)
 	(setq dashboard-banner-logo-title "'((((((((()))))))))")
   (setq dashboard-items '((recents . 15)))
+  (message (expand-file-name "../truth.jpg"))
   (setq dashboard-startup-banner 'logo
-        dashboard-banner-logo-png "/home/null/archive/truth.jpg")
+        dashboard-banner-logo-png (expand-file-name
+                                   "../truth.jpg"
+                                   (file-name-directory load-file-name)))
 	)
 
 ; !!this should be called before theme load
 (use-package centered-window
 	:config
-	(centered-window-mode))
+	;; (centered-window-mode)
+  )
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode)) ; for any *prog*ramming language mode
