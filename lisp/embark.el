@@ -47,10 +47,12 @@
 		)
 	(general-def embark-file-map
     "e" 'eshell
-    "v" (lambda (dir)
-          (create-new-multi-vterm dir))
+    "v" (lambda (file)
+          ;; (message "default dir %s" default-directory)
+          (message "dir is %s" file)
+          (create-new-multi-vterm file))
 
-		"o" (my-embark-ace-action find-file))
+		"o" 'find-file)
 	(general-def embark-buffer-map
 		"o" (my-embark-ace-action switch-to-buffer)
 		)

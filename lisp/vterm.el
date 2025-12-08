@@ -148,12 +148,16 @@
 ;; Use `pop-to-buffer' instead of `switch-to-buffer'
 
 (defun create-new-multi-vterm (dir)
-  (let ((vterm-buffer (multi-vterm-get-buffer)))
-    (setq multi-vterm-buffer-list
-          (nconc multi-vterm-buffer-list (list vterm-buffer)))
-    (set-buffer vterm-buffer)
-    (multi-vterm-internal)
-    (pop-to-buffer vterm-buffer))
+  
+  (with-temp-buffer
+    (cd dir)
+    
+    (let ((vterm-buffer (multi-vterm-get-buffer)))
+      (setq multi-vterm-buffer-list
+            (nconc multi-vterm-buffer-list (list vterm-buffer)))
+      (set-buffer vterm-buffer)
+      (multi-vterm-internal)
+      (pop-to-buffer vterm-buffer)))
   )
 
 (defun my-multi-vterm ()
