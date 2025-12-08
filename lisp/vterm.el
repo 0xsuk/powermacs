@@ -88,6 +88,16 @@
 		(setq-local cursor-in-non-selected-windows nil)
 		)
   )
+
+(defun my-dired-then-vterm (dir)
+  "Open DIR in dired, then open vterm in that directory."
+  (interactive "DDirectory: ")
+  ;; まず dired バッファへ
+  (dired dir)
+  ;; その dired バッファの default-directory を使って vterm
+  (let ((default-directory dir))
+    (my-multi-vterm)))
+
 (defun my-toggle-vterm ()
   "Toggle multi-vterm window."
   (interactive)
@@ -129,33 +139,37 @@
                 (eq major-mode 'vterm-mode))
            return buf))
 
-(defun open-vterm-current-dir ()
-  "open new vterm in current dir"
-  (interactive)
+(defun in-vterm? ()
+  (eq major-mode 'vterm-mode)
+  )
+
+(defun no-vterm-buffer? ()
+  (eq multi-vterm-buffer-list nil))
+;; Use `pop-to-buffer' instead of `switch-to-buffer'
+
+(defun create-new-multi-vterm (dir)
   (let ((vterm-buffer (multi-vterm-get-buffer)))
-    (with-current-buffer vterm-buffer
-      (cd default-directory))
+    (setq multi-vterm-buffer-list
+          (nconc multi-vterm-buffer-list (list vterm-buffer)))
     (set-buffer vterm-buffer)
     (multi-vterm-internal)
-    (pop-to-buffer vterm-buffer)))
+    (pop-to-buffer vterm-buffer))
+  )
 
-;; Use `pop-to-buffer' instead of `switch-to-buffer'
 (defun my-multi-vterm ()
   "Create new vterm buffer."
   (interactive)
-  (if (or (eq multi-vterm-buffer-list nil) (eq major-mode 'vterm-mode))
-      ;;create new buffer
-      (let ((vterm-buffer (multi-vterm-get-buffer)))
-        (setq multi-vterm-buffer-list
-              (nconc multi-vterm-buffer-list (list vterm-buffer)))
-        (set-buffer vterm-buffer)
-        (multi-vterm-internal)
-        (pop-to-buffer vterm-buffer))
-                                        ; toggle vterm 
-                                        ; find first buffer whose major-mode is vterm and pop-to-buffer
-                                        ; write here
-    (if current-prefix-arg
-        (open-vterm-current-dir)
+  (message "pending? %s" find-file-pending)
+  (if find-file-pending
+      (create-new-multi-vterm ))
+  (if (derived-mode-p 'magit-status-mode)
+      
+    (dired magit--default-directory))
+  (if (or  (in-vterm?) (no-vterm-buffer?))
+      (create-new-multi-vterm default-directory)
+                                        ; not in vterm, and some vterm buffer exist
+    (if current-prefix-arg ; always create new vterm regardless?
+        (create-new-multi-vterm default-directory)
       ;; C-u無し: 既存のvtermバッファに移動
       (pop-to-buffer (vterm-find-some)))))
 

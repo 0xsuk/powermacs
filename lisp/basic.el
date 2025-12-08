@@ -95,6 +95,15 @@
       (unless (file-exists-p dir)
         (make-directory dir t)))))
 
+(defvar find-file-pending nil)
+(defun my-find-file ()
+  (interactive)
+  (let ((find-file-pending t))      ; グローバルの一時上書き
+    (unwind-protect
+        (call-interactively #'find-file)
+      )))
+
+
 (defmacro k-time (&rest body)
   "Measure and return the time it takes evaluating BODY."
   `(let ((time (current-time)))
@@ -128,3 +137,20 @@
 
 ;; 定期更新（30秒ごとに再評価）
 (run-at-time nil 30 (lambda () (force-mode-line-update t)))
+
+
+(defvar my-dir-timer nil)
+
+(defun my-print-dir ()
+  (message "dir: %s" default-directory))
+
+(defun my-start-print-dir ()
+  (interactive)
+  (setq my-dir-timer
+        (run-with-timer 0 1 #'my-print-dir)))
+
+(defun my-stop-print-dir ()
+  (interactive)
+  (when my-dir-timer
+    (cancel-timer my-dir-timer)
+    (setq my-dir-timer nil)))

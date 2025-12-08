@@ -114,7 +114,7 @@
 	;; "C-x C-e" 'eval-last-sexp ; bef:eval-last-sexp
 	"C-z" 'async-shell-command ; suspend-frame, useless
 	"M--" 'point-history-show ; negative arg, use C--
-	"C-;" 'find-file; undefined
+	"C-;" 'my-find-file; undefined
   "C-+" 'projectile-find-file
 	;; "M-@" 'er/mark-word
 	"M-e" 'er/expand-region ;bef: forward-sentence

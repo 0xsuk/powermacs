@@ -48,8 +48,7 @@
 	(general-def embark-file-map
     "e" 'eshell
     "v" (lambda (dir)
-          (with-current-dir dir
-                            (vterm)))
+          (create-new-multi-vterm dir))
 
 		"o" (my-embark-ace-action find-file))
 	(general-def embark-buffer-map
