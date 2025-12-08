@@ -129,6 +129,16 @@
                 (eq major-mode 'vterm-mode))
            return buf))
 
+(defun open-vterm-current-dir ()
+  "open new vterm in current dir"
+  (interactive)
+  (let ((vterm-buffer (multi-vterm-get-buffer)))
+    (with-current-buffer vterm-buffer
+      (cd default-directory))
+    (set-buffer vterm-buffer)
+    (multi-vterm-internal)
+    (pop-to-buffer vterm-buffer)))
+
 ;; Use `pop-to-buffer' instead of `switch-to-buffer'
 (defun my-multi-vterm ()
   "Create new vterm buffer."
@@ -144,8 +154,10 @@
                                         ; toggle vterm 
                                         ; find first buffer whose major-mode is vterm and pop-to-buffer
                                         ; write here
-    (pop-to-buffer (vterm-find-some))
-    ))
+    (if current-prefix-arg
+        (open-vterm-current-dir)
+      ;; C-u無し: 既存のvtermバッファに移動
+      (pop-to-buffer (vterm-find-some)))))
 
 (use-package multi-vterm
   :after vterm
