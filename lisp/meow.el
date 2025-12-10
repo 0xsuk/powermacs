@@ -170,6 +170,7 @@
 					(help-mode . normal)
 					(helpful-mode . normal)
 					(json-mode . normal)
+          (messages-buffer-mode . normal)
 					(jupyter-repl-mode . normal)
 					(eww-mode . normal)
 					(mix-mode . normal)
