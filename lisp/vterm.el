@@ -8,6 +8,11 @@
 ;; 	(setq dir (concat dir "/")))
 ;;       (setq-local default-directory dir))))
 
+
+
+;;NOTE: add this line to vterm for better M-r
+;;PROMPT_COMMAND='history -a; history -n; '"${PROMPT_COMMAND}"
+
 (use-package vterm
   :defer 1
 	:config
@@ -21,8 +26,8 @@
 		 ;; PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 		 ;; in bashrc
 		 (completing-read "History: " (with-temp-buffer
-																	(insert-file-contents "~/.bash_history")
-																	(split-string (buffer-string) "\n" t)))))
+																	  (insert-file-contents "~/.bash_history")
+																	  (split-string (buffer-string) "\n" t)))))
 	(defun my-vterm-command ()
 		(interactive)
 		(vterm-send-string
@@ -44,6 +49,8 @@
 		"C-t" nil
     "C-h" nil
     "C-l" nil
+    "C-o" (my-l
+            (dired default-directory))
 		; in vterm mark commands do not work
 		"M-l" nil
     "M-9" nil
