@@ -8,6 +8,7 @@
           )
         )
   
+  
   (add-to-list 'eglot-server-programs
                `(python-mode
                  . ,(eglot-alternatives
@@ -25,4 +26,18 @@
   
   ;; https://joaotavora.github.io/eglot/
   ;; As usual with invoking programs, the executable file fools should be in one of the directories mentioned by the exec-path variable
+
+
+  (fset #'jsonrpc--log-event #'ignore) ; idk. search "eglot sluggish"
+  (setf (plist-get eglot-events-buffer-config :size) 0)
+  
+  
+  ;; 
 )
+
+
+; makesure emacs-lsp-booster binary is avaiable under exec-path
+; install using package-vc-install (see the readme)
+(use-package eglot-booster
+	:after eglot
+	:config	(eglot-booster-mode))

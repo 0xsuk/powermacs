@@ -19,12 +19,14 @@
     '(:name "My Dirs"
             :category file
             :face consult-file
-            :items ("~/.emacs.d/"
+            :items (
+                    "~/.emacs.d/"
                     "~/code/"
                     "~/inst/"
-                    "~/downloads/"
-                    "~/quicklisp/local-projects/"
-                    "~/documents/")
+                    "~/Downloads/"
+                    ;; "~/quicklisp/local-projects/"
+                    ;; "~/documents/"
+                    )
             ))
   (add-to-list 'consult-dir-sources 'my-dirs)
   
