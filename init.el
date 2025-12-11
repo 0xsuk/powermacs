@@ -18,6 +18,7 @@
 ;; (tab-bar-mode)
 ;; (setq tab-bar-new-button nil)
 ;; (setq tab-bar-close-button nil)
+;; (profiler-start 'cpu)
 (defun my-load-file (filename)
 	(load (concat user-emacs-directory "lisp/" filename)))
 (my-load-file "utils.el")
@@ -77,3 +78,5 @@
 (fix-bindings)
 (my-window-transparent)
 (message "INIT COMPLETE")
+
+;; (profiler-report)

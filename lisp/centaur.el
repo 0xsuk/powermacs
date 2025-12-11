@@ -4,7 +4,6 @@
   (setq centaur-tabs-style "bar")
   (setq centaur-tabs-set-bar 'over)
   (setq centaur-tabs-set-close-button nil)
-  (setq centaur-tabs-set-close-button nil)
   (setq centaur-tabs-cycle-scope 'tabs)
   (setq centaur-tabs-adjust-buffer-order t)
   (centaur-tabs-enable-buffer-reordering)

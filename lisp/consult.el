@@ -1,7 +1,15 @@
 (use-package consult
 	:config
-	(consult-customize consult-recent-file consult-buffer consult-ripgrep :preview-key "C-l")
-	)
+	(consult-customize consult-recent-file consult-buffer consult-ripgrep :preview-key "C-l"))
+
+(defun my-consult-ripgrep-noignore (&optional dir initial)
+  "現在の設定に一時的に --no-ignore (git管理外のファイルも検索対象)を足して consult-ripgrep を呼ぶ。"
+  (interactive "P")
+  (let ((consult-ripgrep-args
+         (concat consult-ripgrep-args " --hidden --no-ignore"))
+        )
+    (message "constult %s" consult-ripgrep-args)
+    (consult-ripgrep dir initial)))
 
 (use-package consult-lsp
   :after lsp

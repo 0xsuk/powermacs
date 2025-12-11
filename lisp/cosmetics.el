@@ -37,6 +37,7 @@
 	(setq ring-bell-function 'doom-themes-visual-bell-fn) ; beep!
   )
 
+
 (use-package nyan-mode
 	:config
 	(nyan-mode)
@@ -57,9 +58,9 @@
 
 
 ; workspace
-(use-package persp-mode
-	:init
-	(persp-mode))
+;; (use-package persp-mode
+;; 	:init
+;; 	(persp-mode))
 
 ;; (use-package tao-theme
 ;; 	:init

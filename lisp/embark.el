@@ -52,7 +52,10 @@
           (message "dir is %s" file)
           (create-new-multi-vterm file))
 
-		"o" 'find-file)
+		"o" 'find-file
+    "R" (lambda (file)
+          (my-consult-ripgrep-noignore file))
+    )
 	(general-def embark-buffer-map
 		"o" (my-embark-ace-action switch-to-buffer)
 		)
