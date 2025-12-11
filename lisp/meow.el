@@ -41,8 +41,8 @@
   (meow-normal-define-key
 	 '("n" . my-next-defun)
 	 '("p" . beginning-of-defun)
-   '("N" . my-scroll-super-down)
-	 '("P" . my-scroll-super-up)
+   '("N" . scroll-up)
+	 '("P" . scroll-down)
    '("y" . meow-yank)
 	 '("|" . meow-motion-mode)
    '("0" . meow-expand-0)

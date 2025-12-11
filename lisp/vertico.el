@@ -50,7 +50,7 @@ When the prefix argument is 0, the group order is reset."
   
 	(general-def vertico-map
 		"C-<backspace>" 'dw/minibuffer-backward-kill
-    "M-h" 'vertico-go-home
+    "C--" 'vertico-go-home
 		;; (defun my-embark-insert (strings)
 			;; (interactive)
 			;; (if (eq major-mode 'vterm-mode)
