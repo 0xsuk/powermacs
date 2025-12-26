@@ -28,7 +28,7 @@
  global-auto-revert-non-file-buffers t ; revert dired and other buffers
  ring-bell-function 'ignore
  blink-cursor-mode nil
- large-file-warning-threshold nil; open large file (Pdf) without warning
+ large-file-warning-threshold 10000000; open large file (Pdf) without warning?
  split-width-threshold 1 ; always split horizontally ; no need with popper
  create-lockfiles nil ; do not create #lockfile#
  initial-scratch-message nil

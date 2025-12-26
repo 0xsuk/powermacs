@@ -5,6 +5,6 @@
 	 ;; The completion-styles variable is a list of methods to use when trying to find a match for a completion request
 	 completion-styles '(orderless)
 	 completion-category-defaults nil ; important
-	 orderless-matching-styles '(orderless-literal orderless-regexp)
+	 orderless-matching-styles '(orderless-literal orderless-regexp orderless-initialism)
 	 )
 	 )

@@ -52,7 +52,8 @@
           (message "dir is %s" file)
           (create-new-multi-vterm file))
 
-		"o" 'find-file
+		"o" (my-embark-ace-action find-file)
+    ;; "j"  dired
     "R" (lambda (file)
           (my-consult-ripgrep-noignore file))
     )

@@ -7,8 +7,8 @@
   (setq centaur-tabs-cycle-scope 'tabs)
   (setq centaur-tabs-adjust-buffer-order t)
   (centaur-tabs-enable-buffer-reordering)
+  ;; (centaur-tabs-group-by-projectile-project)
   
-  (centaur-tabs-group-by-projectile-project)
   
   (defun centaur-tabs-buffer-groups ()
     (list
@@ -32,6 +32,13 @@
                           help-mode))
        "help")
       (t
-       (centaur-tabs-get-group-name (current-buffer)))
+       "other"
+       ;; (centaur-tabs-get-group-name (current-buffer))
+       )
       )))
+
+  
   )
+
+
+
