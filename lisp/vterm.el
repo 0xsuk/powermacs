@@ -189,3 +189,60 @@
   :config
   (advice-add #'multi-vterm :override #'my-multi-vterm)
 ) ; always creates new even when one is avaiable
+
+(defun my-vterm-find-file-and-cd ()
+  (interactive)
+  ;; まず DIR から find-file を実行
+  (let* ((file (read-file-name "Find directory: " default-directory)))
+    (if (file-directory-p file)
+        ;; ディレクトリなら vterm のカレントディレクトリを変更
+        (progn
+          (setq default-directory (file-name-as-directory (expand-file-name file)))
+          ;; シェルにも cd を送っておきたければ：
+          (when (derived-mode-p 'vterm-mode)
+            (vterm-send-string (concat "cd " default-directory))
+            (vterm-send-return)))
+      ;; ファイルなら普通に find-file
+      (find-file file))))
+
+;; (with-eval-after-load 'vterm
+;;   (define-key vterm-mode-map (kbd "C-c a") #'my-vterm-find-file-and-cd))
+
+
+
+;;;;;;;;;;; define keymap for my-find-file when invoked from vterm
+
+(defun my-vterm-send-cd (dir)
+  (interactive "DDirectory: ")
+  (vterm-send-string (concat "cd " dir))
+  (vterm-send-return)
+  )
+
+(defun my-find-file-vterm-cd ()
+  (interactive)
+  (let ((input-dir (file-name-directory (minibuffer-contents-no-properties))))
+    (with-current-buffer (window-buffer (minibuffer-selected-window))
+      (my-vterm-send-cd input-dir)))
+  (abort-recursive-edit)
+  )
+
+(defvar my-find-file-vterm-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "C-.") #'my-find-file-vterm-cd)
+    map))
+
+(defun my-setup-find-file-vterm ()
+  "find-file 用ミニバッファだけで有効にするキーマップをセットする."
+  (use-local-map
+   (make-composed-keymap
+    my-find-file-vterm-map
+    (current-local-map))))
+
+(add-hook 'minibuffer-setup-hook
+          (lambda ()
+            (when (and (eq this-command 'my-find-file)
+                       (with-selected-window (minibuffer-selected-window)
+                         (derived-mode-p 'vterm-mode)))
+              (my-setup-find-file-vterm))))
+
+;;;;;;;;;;; 
