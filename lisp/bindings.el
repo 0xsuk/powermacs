@@ -215,6 +215,7 @@
 	"e" 'my-eshell-or-projectile-eshell
 	"g" 'toggle-input-method
   "<f12> b" 'fix-bindings
+  "n" (my-l (my-vscode-open-here))
 	)
 
 (general-def read-expression-map "C-j" nil) ; use C-j to new line without evaluation in Eval:

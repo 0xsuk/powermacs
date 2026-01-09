@@ -2,6 +2,13 @@
 ; [MAYBE] incorporate meow motion to evil
 ; C-u C-SPC jump back
 
+(use-package kkp
+  :ensure t
+  :config
+  ;; (setq kkp-alt-modifier 'alt) ;; use this if you want to map the Alt keyboard modifier to Alt in Emacs (and not to Meta)
+  ;; (global-kkp-mode +1)
+  )
+
 ;;; TIL
 ; isearch-forward-word
 ; key-binding -> returns function in active keymaps
@@ -81,7 +88,11 @@
   (define-key input-decode-map "\C-i" [C-i]) ; https://emacs.stackexchange.com/questions/17509/how-to-distinguish-c-i-from-tab
   (define-key input-decode-map [?\C-\[] (kbd "<C-[>")) ; https://emacs.stackexchange.com/questions/10271/how-to-bind-c-for-real-seriously-for-real-this-time
   )
-(fix-bindings)
+(fix-bindings) ; disable when using kkp
+
+(general-def 'global
+	"C-x C-a C-a" 'execute-extended-command)
+
 (my-window-transparent)
 (message "INIT COMPLETE")
 

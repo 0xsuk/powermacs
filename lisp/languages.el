@@ -62,14 +62,14 @@
 ;; 	(setq python-indent 2)
 ;; 	)
 
-;; (use-package typescript-mode
-;;   :mode ("\\.ts\\'" "\\.tsx\\'") ;active typescript-mode for .ts
-;;   :init
-;;   :hook (typescript-mode . lsp-deferred) ; whenever typescript-mode is activated, call lsp-deferred
-;; 	:custom
-;; 	(typescript-indent-level 2)
-;; 																				;(setq-default js-inden)
-;; 	)
+(use-package typescript-mode
+  :mode ("\\.ts\\'" "\\.tsx\\'") ;active typescript-mode for .ts
+  :init
+  ;; :hook (typescript-mode . lsp-deferred) ; whenever typescript-mode is activated, call lsp-deferred
+	:custom
+	(typescript-indent-level 2)
+																				;(setq-default js-inden)
+	)
 (use-package clojure-mode ; https://clojure-lsp.io/clients/#emacs
   :defer t
   )

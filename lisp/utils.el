@@ -1,3 +1,19 @@
+(defun my-vscode-open-here ()
+  "現在のバッファを VS Code で同じ行に開く。"
+  (interactive)
+  (when buffer-file-name
+    (let* ((file (expand-file-name buffer-file-name))
+           (line (line-number-at-pos))
+           (col  (1+ (- (point)
+                        (save-excursion
+                          (beginning-of-line)
+                          (point)))))
+           (cmd  (format "code -r -g %s:%d:%d &"
+                         (shell-quote-argument file)
+                         line col)))
+      (shell-command cmd))))
+
+
 (defun my-window-transparent ()
   (interactive)
   ;; (set-frame-parameter (selected-frame) 'alpha-background 96)
