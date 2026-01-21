@@ -1,1 +1,0 @@
-![powermacs](powermacs.gif)

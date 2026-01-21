@@ -2,6 +2,7 @@
 !keyd.conf
 !powermacs.gif
 !readme.md
+!dontreadme.md
 !.gitignore
 !init.el
 !lisp/
@@ -10,3 +11,5 @@
 !layouts/**/*
 !snippets/
 !snippets/**/*
+!.bashrc
+.bashrc
