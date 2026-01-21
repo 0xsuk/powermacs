@@ -229,6 +229,8 @@
 (defvar my-find-file-vterm-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "C-.") #'my-find-file-vterm-cd)
+    (define-key map (kbd "C-j") #'dw/minibuffer-backward-kill)
+    (define-key map (kbd "C-k") #'vertico-insert)
     map))
 
 (defun my-setup-find-file-vterm ()
