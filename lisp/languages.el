@@ -62,14 +62,41 @@
 ;; 	(setq python-indent 2)
 ;; 	)
 
-(use-package typescript-mode
-  :mode ("\\.ts\\'" "\\.tsx\\'") ;active typescript-mode for .ts
+;; Tree-sitter based TypeScript mode (built-in Emacs 29+)
+;; Install grammars with: M-x my/install-typescript-grammars
+(use-package treesit
+  :ensure nil  ; built-in
   :init
-  ;; :hook (typescript-mode . lsp-deferred) ; whenever typescript-mode is activated, call lsp-deferred
-	:custom
-	(typescript-indent-level 2)
-																				;(setq-default js-inden)
-	)
+  ;; Define grammar sources
+  (setq treesit-language-source-alist
+        '((typescript "https://github.com/tree-sitter/tree-sitter-typescript"
+                      "master" "typescript/src")
+          (tsx "https://github.com/tree-sitter/tree-sitter-typescript"
+               "master" "tsx/src")))
+    :config
+  ;; Auto-install grammars on first use if missing
+  (unless (and (treesit-language-available-p 'typescript)
+               (treesit-language-available-p 'tsx))
+    (message "TypeScript tree-sitter grammars not found. Install with: M-x my/install-typescript-grammars")))
+
+;; TypeScript configuration
+(use-package typescript-ts-mode
+  :ensure nil  ; built-in
+  :mode (("\\.ts\\'" . typescript-ts-mode)
+         ("\\.tsx\\'" . tsx-ts-mode))
+  :custom
+  (typescript-ts-mode-indent-offset 2)
+  :config
+  )
+
+(use-package prettier-js
+  :config
+  ;; (add-hook 'js-mode-hook 'prettier-js-mode)
+  ;; (add-hook 'typescript-ts-mode-hook 'prettier-js-mode)
+  ;; (add-hook 'tsx-ts-mode-hook 'prettier-js-mode)
+  ;; (setq prettier-js-use-modules-bin t)
+  )
+
 (use-package clojure-mode ; https://clojure-lsp.io/clients/#emacs
   :defer t
   )
