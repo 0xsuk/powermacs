@@ -23,20 +23,23 @@
 ;;TODO sort dirs by length
 (use-package consult-dir
 	:config
-  (defvar my-dirs
-    '(:name "My Dirs"
-            :category file
-            :face consult-file
-            :items (
-                    "~/.emacs.d/"
-                    "~/code/"
-                    "~/inst/"
-                    "~/Downloads/"
-                    ;; "~/quicklisp/local-projects/"
-                    ;; "~/documents/"
-                    )
-            ))
-  (add-to-list 'consult-dir-sources 'my-dirs)
+  ;; (defvar my-dirs
+  ;;   '(:name "My Dirs"
+  ;;           :category file
+  ;;           :face consult-file
+  ;;           :items (
+  ;;                   "~/.emacs.d/"
+  ;;                   "~/code/"
+  ;;                   "~/inst/"
+  ;;                   "~/Downloads/"
+  ;;                   ;; "~/quicklisp/local-projects/"
+  ;;                   ;; "~/documents/"
+  ;;                   )
+  ;;           ))
+  ;; (add-to-list 'consult-dir-sources 'my-dirs)
+  
+  (setq consult-dir-sort-candidates t)
+  (setq consult-dir-default-command (lambda () (interactive) (dired default-directory)))
   
   (defun get-buffers-major-mode (&optional major-mode-symbol)
     "Return a list of buffers with the specified major mode."
