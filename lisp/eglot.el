@@ -2,6 +2,9 @@
   :hook ((c++-mode c-mode)
          . eglot-ensure)
   :config
+  ;; Disable Flymake to avoid conflicts with Flycheck
+  (setq eglot-stay-out-of '(flymake))
+  
   (setq eglot-ignored-server-capabilites
         '(:documentHighlightProvider ;;no highlight on hover
           :inlayHintProvider ;; no argument signatures
@@ -41,3 +44,9 @@
 (use-package eglot-booster
 	:after eglot
 	:config	(eglot-booster-mode))
+
+;; Flycheck-Eglot integration: unify LSP diagnostics with Flycheck
+(use-package flycheck-eglot
+  :after (flycheck eglot)
+  :config
+  (global-flycheck-eglot-mode 1))
