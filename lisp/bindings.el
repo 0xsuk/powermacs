@@ -156,8 +156,8 @@
 	;; "C-x o" nil ; other-window useless ; save in case M-<> overriden
 	"M-g c" nil ; bef:goto-char useless
 	"M-g M-g" nil ; bef:goto-line same as M-g g
-	"M-g M-n" nil ; bef:next-error same as M-g n
-	"M-g M-p" nil ; bef:prev-error same as M-g p
+	"M-g M-n" (my-l (profiler-start `cpu+mem)) ; bef:next-error same as M-g n
+	"M-g M-p" (my-l (profiler-stop)) ; bef:prev-error same as M-g p
 	;; "M-z" nil ;bef:zap-to-char, better use meow
 	"M-c" 'upcase-region ;bef:capitalize-word useless (because it affect only the first letter)
 	"M-t" nil ; bef:transpose-word
