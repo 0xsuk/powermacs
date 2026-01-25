@@ -27,6 +27,13 @@
                     "-log=error"
                     "--enable-config")))
   
+  (add-to-list 'eglot-server-programs
+               '((typescript-ts-mode tsx-ts-mode js-ts-mode)
+                 . ("typescript-language-server" "--stdio"
+                    :initializationOptions
+                    (:preferences
+                     (:importModuleSpecifierPreference "non-relative")))))
+  
   ;; https://joaotavora.github.io/eglot/
   ;; As usual with invoking programs, the executable file fools should be in one of the directories mentioned by the exec-path variable
 

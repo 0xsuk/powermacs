@@ -92,9 +92,9 @@
 (use-package prettier-js
   :config
   ;; (add-hook 'js-mode-hook 'prettier-js-mode)
-  ;; (add-hook 'typescript-ts-mode-hook 'prettier-js-mode)
-  ;; (add-hook 'tsx-ts-mode-hook 'prettier-js-mode)
-  ;; (setq prettier-js-use-modules-bin t)
+  (add-hook 'typescript-ts-mode-hook 'prettier-js-mode)
+  (add-hook 'tsx-ts-mode-hook 'prettier-js-mode)
+  (setq prettier-js-use-modules-bin t)
   )
 
 (use-package clojure-mode ; https://clojure-lsp.io/clients/#emacs

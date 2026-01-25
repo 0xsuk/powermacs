@@ -60,7 +60,7 @@
 
 (use-package flycheck
   :defer 1
-	:init
+	:config
 	(global-flycheck-mode)
 	(setq flycheck-display-errors-delay 0.5)
 
@@ -70,6 +70,19 @@
     "C-c p" 'flycheck-previous-error
     "C-c l" 'flycheck-list-errors
     )
+
+  (use-package flycheck-projectile
+    )
+  
+  (use-package add-node-modules-path
+    :ensure nil
+    :load-path "~/.emacs.d/lisp/MIT"
+    :hook ((js-mode js-ts-mode typescript-mode typescript-ts-mode tsx-ts-mode web-mode) . add-node-modules-path)
+    
+    :config
+    (setq add-node-modules-path-command `("npm bin" "pnpm bin"))
+    )
+  
   )
 
 (use-package command-stats

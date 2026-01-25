@@ -2,7 +2,7 @@
 	:init
 	(setq
 	 corfu-auto t
-	 corfu-auto-delay .5
+	 corfu-auto-delay .2
 	 corfu-preview-current nil
 	 corfu-auto-prefix 2
 	 corfu-cycle t
