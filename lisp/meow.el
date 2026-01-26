@@ -147,11 +147,15 @@
       (meow--select))))
 
 (use-package meow
+  :quelpa (meow :fetcher github :repo "0xsuk/meow")
+  :custom
+  (meow-keypad-leader-transparent t)
+  (meow-mode-state-for-message-buffer 'normal)
 	:config
 	(meow-setup)
 	(define-key meow-keymap [remap describe-key] 'helpful-key)
 	(meow-global-mode 1)
-	(setq meow-mode-state-list
+	(setq-default meow-mode-state-list
 				'((man-mode . normal)
           (authinfo-mode . normal)
 					(beancount-mode . normal)
@@ -170,7 +174,7 @@
 					(help-mode . normal)
 					(helpful-mode . normal)
 					(json-mode . normal)
-          (messages-buffer-mode . normal)
+          ;; (messages-buffer-mode . normal) ; messageはmeowロード前に作られるからきかない
 					(jupyter-repl-mode . normal)
 					(eww-mode . normal)
 					(mix-mode . normal)
@@ -189,6 +193,8 @@
 					(Custom-mode . normal)))
 	(setq meow-use-clipboard t)
 
+  
+  
 	(defun my-before-meow-insert-exit (&rest args)
 		(corfu-quit)
 		(when (eq major-mode 'vterm-mode)
