@@ -71,12 +71,37 @@
 ;; (add-hook 'emacs-lisp-mode-hook #'my/setup-elisp)
 
 (use-package cape
+  :custom
+  (cape-dabbrev-buffer-function 'my-cape-visible-buffers)
 	:config
 	(my-load-file "cape-yasnippet.el")
 	(add-to-list 'completion-at-point-functions #'cape-yasnippet)
-	(setq cape-dabbrev-check-other-buffers nil ; recommended
-				)
+  
 
+  (defun my-visible-buffers-selected-frame ()
+    (delete-dups
+     (mapcar #'window-buffer (window-list (selected-frame) 'no-minibuf))))
+  
+  (defun my-cape-visible-buffers ()
+    (my-visible-buffers-selected-frame)
+    )
+  
+  ;; (defun my-cape-magit-buffers ()
+  ;;   "Return `magit-mode' buffers"
+    
+  ;;   (cape--buffer-list
+  ;;    (lambda (buf)
+  ;;      (let ((mode (buffer-local-value 'major-mode buf)))
+  ;;        (provided-mode-derived-p mode #'text-mode)
+  ;;        (provided-mode-derived-p mode #'magit-mode)))))
+
+  ;; (defun my-cape-dabbrev-for-commit ()
+  ;;   (setq-local cape-dabbrev-buffer-function #'my-cape-magit-and-text-buffers)
+  ;;   )
+  
+  ;; (with-eval-after-load 'git-commit
+  ;;   (add-hook 'git-commit-setup-hook #'my-cape-dabbrev-for-commit))
+  
 	;; (defun my-cape-for-clisp ()
 		;; (setq-local completion-at-point-functions
 								;; `(,(cape-super-capf
