@@ -73,15 +73,16 @@
                       "master" "typescript/src")
           (tsx "https://github.com/tree-sitter/tree-sitter-typescript"
                "master" "tsx/src")))
-    :config
+  :config
   ;; Auto-install grammars on first use if missing
   (unless (and (treesit-language-available-p 'typescript)
                (treesit-language-available-p 'tsx))
-    (message "TypeScript tree-sitter grammars not found. Install with: M-x my/install-typescript-grammars")))
+    (message "TypeScript tree-sitter grammars not found. Install with: M-x my/install-typescript-grammars"))
+  
+  )
 
-;; TypeScript configuration
 (use-package typescript-ts-mode
-  :ensure nil  ; built-in
+  :ensure nil  ; built-in to treesit
   :mode (("\\.ts\\'" . typescript-ts-mode)
          ("\\.tsx\\'" . tsx-ts-mode))
   :custom

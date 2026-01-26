@@ -3,6 +3,8 @@
          . eglot-ensure)
   :config
   ;; Disable Flymake to avoid conflicts with Flycheck
+  ;; (setq eglot-sync-connect 0) ; does this make differnee
+  
   (setq eglot-stay-out-of '(flymake))
   
   (setq eglot-ignored-server-capabilites

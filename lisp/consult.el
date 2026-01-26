@@ -1,6 +1,10 @@
 (use-package consult
 	:config
-	(consult-customize consult-recent-file consult-buffer consult-ripgrep :preview-key "C-l"))
+	(consult-customize consult-recent-file consult-buffer consult-ripgrep :preview-key "C-l")
+
+                                        ; rgでは #eslint -g 'package.*'などできる
+  
+  )
 
 (defun my-consult-ripgrep-noignore (&optional dir initial)
   "現在の設定に一時的に --no-ignore (git管理外のファイルも検索対象)を足して consult-ripgrep を呼ぶ。"
