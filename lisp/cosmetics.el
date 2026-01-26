@@ -38,12 +38,12 @@
   )
 
 
-(use-package nyan-mode
-	:config
-	(nyan-mode)
-	(setq nyan-animate-nyancat t
-				nyan-bar-length 16)
-)
+;; (use-package nyan-mode
+;; 	:config
+;; 	(nyan-mode)
+;; 	(setq nyan-animate-nyancat t
+;; 				nyan-bar-length 16)
+;; )
 
 ;; (use-package ef-themes
 ;; 	:config

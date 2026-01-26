@@ -125,13 +125,13 @@
                     'face '(:foreground "red" :weight bold))
       "")))
 
-;; mode-line に追加
-(setq global-mode-string
-      (append global-mode-string
-              '((:eval (my-emacs-multi-warning)))))
+;; ;; mode-line に追加 ; slow
+;; (setq global-mode-string
+;;       (append global-mode-string
+;;               '((:eval (my-emacs-multi-warning)))))
 
 ;; 定期更新（30秒ごとに再評価）
-(run-at-time nil 30 (lambda () (force-mode-line-update t)))
+;; (run-at-time nil 30 (lambda () (force-mode-line-update t)))
 
 
 (defvar my-dir-timer nil)
