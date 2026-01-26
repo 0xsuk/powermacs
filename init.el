@@ -2,7 +2,8 @@
 ; [MAYBE] incorporate meow motion to evil
 ; C-u C-SPC jump back
 
-(let ((inhibit-message t) ; 0.2秒はやなる？
+(let (
+      (inhibit-message t) ; 0.2秒はやなる
       (gc-cons-threshold (* 1000 1000 1000))
       (file-name-handler-alist nil)); Every file opened and loaded by Emacs will run through this list to check for a proper handler for the file, but during startup, it won’t need any of them.
   (use-package kkp
