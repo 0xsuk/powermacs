@@ -24,8 +24,8 @@
 	;(projectname)$ ipython kernel install --user --name=projectname
 	(setq ein:output-area-inlined-images nil)
 	(setq ein:worksheet-enable-undo t)
-	(add-hook 'ein:notebook-mode-hook ;called twice (fundamental and python)
-						'undo-tree-mode)
+	;; (add-hook 'ein:notebook-mode-hook ;called twice (fundamental and python)
+	;; 					'undo-tree-mode)
 	(general-def 'ein:notebook-mode-map
 		"M-RET" nil)
 	;; (defun ein-tune-fundamental ()

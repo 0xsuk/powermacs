@@ -21,17 +21,19 @@
   :defer 1
 	)
 
-(use-package undo-tree
-  :init
-  (global-undo-tree-mode 1)
-	(setq undo-tree-visualizer-diff t
-				undo-tree-visualizer-timestamps t)
-  :config
-  ;; (evil-set-undo-system 'undo-tree) ; setq is not working don't know why
-  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))) ; TODO not working
-	(general-def undo-tree-map
-		"C-/" nil
-    "C-?" nil))
+;; (use-package undo-tree
+;;   :init
+;;   (global-undo-tree-mode 1)
+;; 	(setq undo-tree-visualizer-diff t
+;; 				undo-tree-visualizer-timestamps t)
+;;   :config
+;;   ;; (evil-set-undo-system 'undo-tree) ; setq is not working don't know why
+;;   (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))) ; TODO not working
+;; 	(general-def undo-tree-map
+;; 		"C-/" nil
+;;     "C-?" nil))
+
+(use-package undo-fu)
 
 (use-package imenu-anywhere)
 

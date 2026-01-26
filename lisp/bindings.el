@@ -130,8 +130,8 @@
 
 	"M-[" 'backward-sexp ; undefined
 	"M-\"" 'forward-sexp ; undefined
-	"C-\"" 'undo-tree-redo ; abort-recursive-edit ?? dunno what
-	"<C-[>" 'undo-tree-undo ; undefined
+	"C-\"" 'undo-fu-only-redo ; abort-recursive-edit ?? dunno what
+	"<C-[>" 'undo-fu-only-undo ; undefined
 	;;; free keys
 	;; "C-x C-j"  ; use C-j
 	;; "C-." 'counsel-switch-buffer
