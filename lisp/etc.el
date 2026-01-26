@@ -76,14 +76,16 @@
   (use-package flycheck-projectile
     )
   
-  (use-package add-node-modules-path
-    :ensure nil
-    :load-path "~/.emacs.d/lisp/MIT"
-    :hook ((js-mode js-ts-mode typescript-mode typescript-ts-mode tsx-ts-mode web-mode) . add-node-modules-path)
+
+  ; monorepoだとうまくいかないので手動で.dir-locals.elをかいてexec-pathにnode_modules/.binを追加するhougaii
+  ;; (use-package add-node-modules-path
+  ;;   :ensure nil
+  ;;   :load-path "~/.emacs.d/lisp/MIT"
+  ;;   :hook ((js-mode js-ts-mode typescript-mode typescript-ts-mode tsx-ts-mode web-mode) . add-node-modules-path)
     
-    :config
-    (setq add-node-modules-path-command `("npm bin" "pnpm bin"))
-    )
+  ;;   :config
+  ;;   (setq add-node-modules-path-command `("npm bin" "pnpm bin"))
+  ;;   )
   
   
   
