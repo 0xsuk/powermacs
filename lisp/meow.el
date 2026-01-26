@@ -11,7 +11,7 @@
 																								;; (7 . "7")
 																								;; (8 . "8")
 																								;; (9 . "9")))
-  (meow-motion-overwrite-define-key ; overriden key of major mode map will AUTOMATICALLY rebound to H-<key>
+  (meow-motion-define-key ; overriden key of major mode map will AUTOMATICALLY rebound to H-<key>
    '("j" . meow-next)
    '("k" . meow-prev)
 	 '("J" . my-scroll-down)
@@ -21,10 +21,10 @@
    )
   (meow-leader-define-key
    ;; SPC j/k will run the original command in MOTION state.
-   '("j" . "H-j")
-   '("k" . "H-k")
-	 '("J" . "H-J")
-	 '("K" . "H-k")
+   ;; '("j" . "H-j")
+   ;; '("k" . "H-k")
+	 ;; '("J" . "H-J")
+	 ;; '("K" . "H-k")
    ;; Use SPC (0-9) for digit arguments.
    '("1" . meow-digit-argument)
    '("2" . meow-digit-argument)
