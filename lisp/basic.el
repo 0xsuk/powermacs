@@ -23,6 +23,7 @@
 (delete-selection-mode 1) ; for yas: typedef type name
 (global-auto-revert-mode t)
 (setq
+ initial-major-mode 'fundamental-mode
  save-interprogram-paste-before-kill t ; copy system clipboard to killring before kill
  recentf-max-saved-items 1000
  global-auto-revert-non-file-buffers t ; revert dired and other buffers
@@ -35,8 +36,7 @@
  warning-minimum-level :emergency
  inhibit-startup-message t
  ;; Maintainer: My suggestion is to repeatedly multiply gc-cons-threshold by 2 until you stop seeing significant improvements in responsiveness, and in any case not to increase by a factor larger than 100 or somesuch. If even a 100-fold increase doesn't help, there's some deeper problem with the Lisp code which produces so much garbage, or maybe GC is not the reason for slowdown.
- gc-cons-threshold (* 1000 1000 1000) ; should be lowered after initialization?
- ;; gc-cons-threshold 100000000 ; lsp performance https://emacs-lsp.github.io/lsp-mode/page/performance/
+ 
  read-process-output-max (* 1024 1024) ; same
  scroll-conservatively 1
  scroll-step 1
@@ -65,13 +65,9 @@
  js-indent-level 2
  indent-tabs-mode nil
  sh-indentation 2)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
+
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
-(line-number-mode -1)
-(visual-line-mode 1)
-(global-eldoc-mode -1)
+
 (recentf-mode)
 (fset 'yes-or-no-p 'y-or-n-p)
 ;(setq debug-on-error nil) ; verbose error
@@ -82,7 +78,6 @@
 (electric-pair-mode t) ; auto close parentheses
 (show-paren-mode -1) ; colorize matching parenthesis under cursor
 ;; (setq show-paren-delay 0.1)
-(global-display-line-numbers-mode 0)
 (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 ; no need for this on bash ;; (setq shell-command-switch "-ic") ; allows zsh alias
