@@ -54,6 +54,14 @@
 
 ;; Flycheck-Eglot integration: unify LSP diagnostics with Flycheck
 (use-package flycheck-eglot
+  :ensure nil
+  :load-path "~/.emacs.d/lisp/MIT"
   :after (flycheck eglot)
   :config
-  (global-flycheck-eglot-mode 1))
+  (global-flycheck-eglot-mode 1)
+  (setq-default flycheck-eglot-exclusive nil) ; set nil if eglot-check wants to have next checker (like javascript-eslint)
+  
+  (flycheck-add-next-checker 'eglot-check 'javascript-eslint)
+                                        ; at this point (2026/01), theres no official way  to configure checker w.r.t. major-modes. read https://github.com/flycheck/flycheck/issues/1762 for issue & workaround
+  ; 
+  )

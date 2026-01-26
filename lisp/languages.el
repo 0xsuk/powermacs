@@ -87,6 +87,7 @@
   :custom
   (typescript-ts-mode-indent-offset 2)
   :config
+  (setq css-indent-offset 2)
   )
 
 (use-package prettier-js
