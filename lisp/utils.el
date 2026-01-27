@@ -1,17 +1,57 @@
+  (defun my-is-magit-derived-p (mode)
+    (provided-mode-derived-p mode #'magit-mode)
+    )
+  
+  (defun my-get-magit-file-path-at-cursor ()
+    (magit-diff--file))
+  
+  (defun my-copy-file-reference ()
+    (interactive)
+    (let* ((magit-p (my-is-magit-derived-p major-mode))
+           (file-path (if magit-p (my-get-magit-file-path-at-cursor)
+                        (buffer-file-name))))
+      (if file-path
+          (progn
+            (kill-new (format "@%s" file-path))
+            (message "copied: %s" file-path))
+        (message "not a file")
+        )
+      )
+    )
+
+(defun get-buf-and-point-in-magit-diff ()
+  (magit-diff-visit-file--noselect (and magit-diff-visit-prefer-worktree
+                                        (memq (magit-diff--dwim) '(staged unstaged)))))
+
+(defun get-linenum-in-maigt-diff ()
+  (let* ((buf-and-pos (get-buf-and-point-in-magit-diff))
+         (buf (car buf-and-pos))
+         (pos (cadr buf-and-pos)))
+    
+    (with-current-buffer buf
+      (line-number-at-pos pos))
+    )
+  )
+
 (defun my-vscode-open-here ()
   "現在のバッファを VS Code で同じ行に開く。"
   (interactive)
-  (when buffer-file-name
-    (let* ((file (expand-file-name buffer-file-name))
-           (line (line-number-at-pos))
-           (col  (1+ (- (point)
-                        (save-excursion
-                          (beginning-of-line)
-                          (point)))))
-           (cmd  (format "code -r -g %s:%d:%d &"
-                         (shell-quote-argument file)
-                         line col)))
-      (shell-command cmd))))
+  (let* (
+         (magit-p (my-is-magit-derived-p major-mode))
+         (file (if magit-p (my-get-magit-file-path-at-cursor)
+                 (buffer-file-name))))
+    (when file
+      (let* ((line (if magit-p (get-linenum-in-maigt-diff) (line-number-at-pos)))
+             (col  (if magit-p 0
+                     (1+ (- (point)
+                            (save-excursion
+                              (beginning-of-line)
+                              (point))))))
+             (cmd  (format "code -r -g %s:%d:%d &"
+                           (shell-quote-argument file)
+                           line col)))
+        (shell-command cmd)))
+    ))
 
 
 (defun my-window-transparent ()
@@ -159,7 +199,8 @@
 (defun my-search-space ()
 	(interactive)
 	(isearch-forward nil t)
-	(isearch-yank-string " "))
+	(isearch-yank-string " ")
+  (isearch-exit))
 
 (defun my-search-leftparen ()
 	(interactive)
