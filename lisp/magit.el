@@ -1,6 +1,7 @@
 (use-package magit
   :defer t
   :custom
+  (magit-diff-visit-prefer-worktree t) ; do not open in * index *
   (magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1) ; show in full window
   :config
 	(general-def magit-status-mode-map
