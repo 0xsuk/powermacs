@@ -155,7 +155,7 @@
 	"C-x C-n" 'my-max-popper-window ; set-goal-column no use probably
 	;; "C-x o" nil ; other-window useless ; save in case M-<> overriden
 	"M-g c" nil ; bef:goto-char useless
-	"M-g M-g" nil ; bef:goto-line same as M-g g
+	"M-g M-g" 'my-copy-file-reference ; bef:goto-line same as M-g g
 	"M-g M-n" (my-l (profiler-start `cpu+mem)) ; bef:next-error same as M-g n
 	"M-g M-p" (my-l (profiler-stop)) ; bef:prev-error same as M-g p
 	;; "M-z" nil ;bef:zap-to-char, better use meow
