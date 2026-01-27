@@ -230,3 +230,29 @@
 													 ".lisp")))))
 		(call-interactively 'find-file))
 	)
+
+(defun eslint-fix-buffer ()
+  "Run eslint --fix on the current buffer file.
+Find eslint from exec-path and pass the relative path from projectile root."
+  (interactive)
+  (if (not buffer-file-name)
+      (message "Buffer is not visiting a file")
+    (let* ((eslint-bin (executable-find "eslint"))
+           (project-root (and (fboundp 'projectile-project-root)
+                              (projectile-project-root)))
+           (file-path buffer-file-name)
+           (relative-path (if project-root
+                              (file-relative-name file-path project-root)
+                            file-path)))
+      (if (not eslint-bin)
+          (message "eslint not found in exec-path")
+        (save-buffer)
+        (let* ((default-directory (or project-root default-directory))
+               (output (shell-command-to-string
+                       (format "%s --fix %s"
+                               (shell-quote-argument eslint-bin)
+                               (shell-quote-argument relative-path)))))
+          (revert-buffer t t t)
+          (if (string-empty-p (string-trim output))
+              (message "eslint --fix completed")
+            (message "eslint --fix: %s" (string-trim output))))))))
