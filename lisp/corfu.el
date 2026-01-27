@@ -71,11 +71,12 @@
 ;; (add-hook 'emacs-lisp-mode-hook #'my/setup-elisp)
 
 (use-package cape
+  :quelpa (cape :fetcher github :repo "minad/cape")
   :custom
   (cape-dabbrev-buffer-function 'my-cape-visible-buffers)
 	:config
-	(my-load-file "cape-yasnippet.el")
-	(add-to-list 'completion-at-point-functions #'cape-yasnippet)
+	;; (my-load-file "cape-yasnippet.el") ; too old
+	;; (add-to-list 'completion-at-point-functions #'cape-yasnippet)
   
 
   (defun my-visible-buffers-selected-frame ()
