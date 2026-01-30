@@ -31,7 +31,7 @@
          (when (string-prefix-p prefix name)
            (cl-return t)))
 
-       ;; Is not magit buffer.
+       ; Is not magit buffer
        ;; (and (string-prefix-p "magit" name)
        ;;      (not (file-name-extension name)))
        )))
@@ -42,8 +42,8 @@
   (defun centaur-tabs-buffer-groups ()
     (list
      (cond
+      ((eq major-mode 'magit-status-mode) "magit-status")
       ((memq major-mode '(magit-process-mode
-                          magit-status-mode
                           magit-diff-mode
                           magit-log-mode
                           magit-file-mode
