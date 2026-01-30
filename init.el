@@ -36,7 +36,7 @@
   ;; (profiler-start 'cpu)
   (defun my-load-file (filename)
 	  (load (concat user-emacs-directory "lisp/" filename)))
-  (my-load-file "tramp.el")
+  ;; (my-load-file "tramp.el")
   (my-load-file "utils.el")
   (my-load-file "basic.el")
   (my-load-file "cosmetics.el")
@@ -44,7 +44,7 @@
   ;; (my-load-file "exwm.el")
   ;; (my-load-file "evil.el")
   (my-load-file "popper.el")
-  ;; (my-load-file "display-buffer.el")
+  (my-load-file "display-buffer.el")
   (my-load-file "purpose.el")
   (my-load-file "elfeed.el")
 	
