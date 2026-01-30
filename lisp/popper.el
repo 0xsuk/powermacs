@@ -24,7 +24,7 @@
           "^\\*sly-stickers.*"
 					"\\*xref\\*"
 					"\\*Backtrace\\*"
-					"^\\*Embark Collect.*"
+					;; "^\\*Embark Collect.*"
 					compilation-mode
 					"^\\*sly-description*\\*$"
 					point-history-show-mode

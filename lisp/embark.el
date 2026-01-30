@@ -34,7 +34,11 @@
 				(embark-dwim)))))
 
 (use-package embark
+  :custom
+  (embark-mixed-indicator-delay 0)
 	:config
+  
+  
 	(general-def 'global
 		"C-<return>" 'embark-dwim ; good alternative to M-. find def
 		"C-h B" 'embark-bindings
@@ -57,11 +61,14 @@
 	(general-def embark-bookmark-map
 		"o" (my-embark-ace-action bookmark-jump))
 
-	;; (defun my-quit-minibuffer-when-collect ()
-		;; (with-selected-window (active-minibuffer-window)
-			;; (minibuffer-keyboard-quit))
-		;; )
-	)
+  (defun my/embark-collect-close-vertico (&rest _args)
+    "Close the minibuffer (Vertico) before showing Embark Collect."
+    (when (minibufferp (current-buffer))
+      (abort-recursive-edit)))
+  ;; (advice-add 'embark-collect :after #'my/embark-collect-close-vertico)
+
+    
+	  )
 
 (use-package embark-consult
 	:hook
