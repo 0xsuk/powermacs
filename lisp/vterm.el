@@ -70,6 +70,7 @@
 		"M-o" 'my-vterm-files ; use find-file insert
 		"M-:" nil
 		"<f12>" nil
+    "<C-return>" (my-l) ; prevent embark-dwim
 		"<C-backspace>" (my-l (vterm-send-key (kbd "C-w")))
 		";"
 		(general-key-dispatch 'vterm--self-insert
