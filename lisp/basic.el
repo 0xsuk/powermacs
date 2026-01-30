@@ -23,7 +23,6 @@
 (delete-selection-mode 1) ; for yas: typedef type name
 (global-auto-revert-mode t)
 (setq
- load-prefer-newer t ; use el if its newer than eln. (useful for modifying package source)
  initial-major-mode 'fundamental-mode
  save-interprogram-paste-before-kill t ; copy system clipboard to killring before kill
  recentf-max-saved-items 1000

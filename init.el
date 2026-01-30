@@ -1,10 +1,13 @@
+; Last package install: 2026-01-2
+
+
 ;;; TODO
 ; [MAYBE] incorporate meow motion to evil
 ; C-u C-SPC jump back
 
-(let (
+(let ((load-prefer-newer nil)
       (inhibit-message t) ; 0.2秒はやなる
-      (gc-cons-threshold (* 1000 1000 1000))
+      (gc-cons-threshold most-positive-fixnum)
       (file-name-handler-alist nil)); Every file opened and loaded by Emacs will run through this list to check for a proper handler for the file, but during startup, it won’t need any of them.
   (use-package kkp
     :ensure t
