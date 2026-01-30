@@ -1,5 +1,6 @@
 ; package for sorting completion candidates
 (use-package prescient
+  :quelpa (prescient :fetcher github :repo "emacsmirror/prescient" :commit "ae414dde56f3430867faf41c04e4c3df75f9c960")
 	;; :config
 	;; I use orderless ;; (setq prescient-filter-method '(literal initialism)) ; don need regex
 	;; (setq completion-category-overrides nil) ; then all falls back to completion-styles
@@ -7,6 +8,7 @@
 
 
 (use-package corfu-prescient
+  :quelpa (corfu-prescient :fetcher github :repo "emacsmirror/prescient" :commit "ae414dde56f3430867faf41c04e4c3df75f9c960")
 	;; :after (corfu orderless)
 	:after corfu
 	:config
@@ -19,6 +21,7 @@
 	(corfu-prescient-mode))
 
 (use-package vertico-prescient
+  :quelpa (vertico-prescient :fetcher github :repo "emacsmirror/prescient" :commit "ae414dde56f3430867faf41c04e4c3df75f9c960")
 	:after vertico
 	:config
 	(setq

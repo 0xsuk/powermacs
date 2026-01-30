@@ -6,6 +6,10 @@
 ; M-x esup
 (use-package esup)
 
+
+(use-package tabspaces
+  :quelpa (tabspaces :fetcher github :repo "mclear-tools/tabspaces" :commit "8bdc7d7c8b42c42ff53609ca1e7de4541505fffb"))
+
 (use-package exec-path-from-shell ; needed for lsp to work properly
   :config
   (when (memq window-system '(mac ns x))

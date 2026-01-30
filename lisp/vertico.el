@@ -23,29 +23,9 @@ folder, otherwise delete a character backward"
     nil)
   )
 (use-package vertico
-  :config
-  (defun vertico-next-group (&optional n)
-    "Cycle N groups forward.
-When the prefix argument is 0, the group order is reset."
-    (interactive "p")
-    (let ((next-index (+ myvertico-index n)))
-      (when (cdr vertico--groups)
-        (if (setq vertico--lock-groups (not (eq n 0)))
-            (setq vertico--groups (vertico--cycle vertico--groups
-                                                  (if (and (not myvertico-cycle-group) (out-of-list next-index vertico--groups))
-                                                      0
-                                                    (let ((len (length vertico--groups)))
-                                                      (setq myvertico-index next-index)
-                                                      (- len (mod (- n) len))
-                                                      )))
-                  vertico--all-groups (vertico--cycle vertico--all-groups
-                                                      (seq-position vertico--all-groups
-                                                                    (car vertico--groups))))
-          (setq vertico--groups nil
-                vertico--all-groups nil))
-        (setq vertico--lock-candidate nil
-              vertico--input nil))))
+  :quelpa (vertico :fetcher github :repo "minad/vertico" :commit "c12c8f842fd184db44fb2b835b0f954bbc90c7a6")
   
+  :config
   (setq vertico-count 15)
   
 	(general-def vertico-map

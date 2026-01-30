@@ -1,4 +1,5 @@
 (use-package magit
+  :quelpa (magit :fetcher github :repo "magit/magit" :commit "c800f79c2061621fde847f6a53129eca0e8da728")
   :defer t
   :custom
   (magit-diff-visit-prefer-worktree t) ; do not open in * index *

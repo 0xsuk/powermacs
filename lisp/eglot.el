@@ -1,4 +1,6 @@
 (use-package eglot
+  :ensure t
+  :quelpa (eglot :fetcher github :repo "joaotavora/eglot" :commit "7084a59906bc7796cc369af4010500998140ab1c")
   :hook ((c++-mode c-mode)
          . eglot-ensure)
   :config
