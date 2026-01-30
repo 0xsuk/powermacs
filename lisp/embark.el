@@ -39,12 +39,6 @@
 		"C-<return>" 'embark-dwim ; good alternative to M-. find def
 		"C-h B" 'embark-bindings
 		)
-	(general-def vertico-map
-		"C-<return>" 'vertico-exit-input
-		"C-o" 'embark-act
-		"C-SPC" 'embark-export 
-		;; "M-." 'my-embark-preview
-		)
 	(general-def embark-file-map
     "e" 'eshell
     "v" (lambda (file)

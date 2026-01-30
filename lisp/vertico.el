@@ -29,6 +29,7 @@ folder, otherwise delete a character backward"
   (setq vertico-count 15)
   
 	(general-def vertico-map
+    "C-<return>" 'vertico-exit-input
 		"C-<backspace>" 'dw/minibuffer-backward-kill
     "C--" 'vertico-go-home
 		;; (defun my-embark-insert (strings)
@@ -49,6 +50,7 @@ folder, otherwise delete a character backward"
 		"C-u C-p" 'vertico-last
 		"C-u C-n" 'vertico-first
     "M-." 'embark-collect
+    "C-o" 'embark-act
 		)
   (vertico-mode))
 
