@@ -1,4 +1,13 @@
 (use-package centaur-tabs
+  :custom
+  (centaur-tabs-hide-tabs-hooks
+   ;; '(magit-status-mode-hook
+     ;; magit-popup-mode-hook
+     ;; reb-mode-hook
+     ;; completion-list-mode-hook)
+   nil
+   )
+  
   :config
   (centaur-tabs-mode t)
   (setq centaur-tabs-style "bar")
@@ -8,6 +17,26 @@
   (setq centaur-tabs-adjust-buffer-order t)
   (centaur-tabs-enable-buffer-reordering)
   ;; (centaur-tabs-group-by-projectile-project)
+  
+  
+  (defun my-centaur-tabs-hide-tab (x)
+    "Do no to show buffer X in tabs."
+    (let ((name (format "%s" x)))
+      (or
+       ;; Current window is not dedicated window.
+       ;; (window-dedicated-p (selected-window))
+
+       ;; Buffer name not match below blacklist.
+       (cl-dolist (prefix centaur-tabs-excluded-prefixes)
+         (when (string-prefix-p prefix name)
+           (cl-return t)))
+
+       ;; Is not magit buffer.
+       ;; (and (string-prefix-p "magit" name)
+       ;;      (not (file-name-extension name)))
+       )))
+  
+  (setq centaur-tabs-hide-tab-function 'my-centaur-tabs-hide-tab) ; to use with popper
   
   
   (defun centaur-tabs-buffer-groups ()
