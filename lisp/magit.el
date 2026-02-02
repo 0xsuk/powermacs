@@ -15,4 +15,8 @@
   (setq magit-log-section-commit-count 20)
   (setq-default magit-log--color-graph t)
 	
+
+
+  (put 'magit-log-mode 'magit-log-default-arguments
+     '("--graph" "-n256" "--decorate" "--color")) ; add color arg to default (unofficial way)
   )
