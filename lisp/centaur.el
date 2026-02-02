@@ -1,4 +1,5 @@
 (use-package centaur-tabs
+  :quelpa (centaur-tabs :fetcher github :repo "ema2159/centaur-tabs" :commit "5ad22d9a6a5d056a07f08b6fe6253f2a71f94ad8")
   :custom
   (centaur-tabs-hide-tabs-hooks
    ;; '(magit-status-mode-hook
