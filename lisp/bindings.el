@@ -1,8 +1,3 @@
-(use-package general
-  :config
-	(general-override-mode)
-	)
-
 (general-def
   :keymaps 'general-override-mode-map
 	"M-l" 'windmove-right ; downcase word
