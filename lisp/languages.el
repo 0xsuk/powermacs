@@ -1,11 +1,12 @@
-(use-package fuel
-  :defer t
-  :quelpa (fuel :fetcher github :repo "mcandre/fuel" :files ("fuel-1.0/*"))
-  :config
-  (setq fuel-listener-factor-binary "~/inst/factor/factor"
-        fuel-listener-factor-image "~/inst/factor/factor.image"
-        fuel-factor-root-dir "~/inst/factor/factor/work")
-  )
+; repo does not exist
+;; (use-package fuel
+;;   :defer t
+;;   :quelpa (fuel :fetcher github :repo "mcandre/fuel" :files ("fuel-1.0/*"))
+;;   :config
+;;   (setq fuel-listener-factor-binary "~/inst/factor/factor"
+;;         fuel-listener-factor-image "~/inst/factor/factor.image"
+;;         fuel-factor-root-dir "~/inst/factor/factor/work")
+;;   )
 
 (use-package cmake-mode
   :defer t
