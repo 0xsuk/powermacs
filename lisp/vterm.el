@@ -97,15 +97,6 @@
 		)
   )
 
-(defun my-dired-then-vterm (dir)
-  "Open DIR in dired, then open vterm in that directory."
-  (interactive "DDirectory: ")
-  ;; まず dired バッファへ
-  (dired dir)
-  ;; その dired バッファの default-directory を使って vterm
-  (let ((default-directory dir))
-    (my-multi-vterm)))
-
 (defun my-toggle-vterm ()
   "Toggle multi-vterm window."
   (interactive)
@@ -174,9 +165,6 @@
   (message "pending? %s" find-file-pending)
   (if find-file-pending
       (create-new-multi-vterm ))
-  (if (derived-mode-p 'magit-status-mode)
-      
-    (dired magit--default-directory))
   (if (or  (in-vterm?) (no-vterm-buffer?))
       (create-new-multi-vterm default-directory)
                                         ; not in vterm, and some vterm buffer exist

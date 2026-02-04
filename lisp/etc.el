@@ -54,14 +54,16 @@
   :diminish which-key-mode
   :config
   (setq which-key-idle-delay 0.3))
-(use-package helpful
-  :defer 1
-  :config
-	(general-def 'global
+
+(general-def 'global
 		"C-h f" #'helpful-callable
 		"C-h v" #'helpful-variable
 		"C-h k" #'helpful-key
 		"C-h x" #'helpful-command)
+
+(use-package helpful
+  :defer 1
+  :config
 	)
 
 (use-package flycheck
