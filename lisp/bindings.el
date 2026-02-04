@@ -216,6 +216,10 @@
 	"g" 'toggle-input-method
   "<f12> b" 'fix-bindings
   "n" (my-l (my-vscode-open-here))
+
+  "0" 'my-open-vscode
 	)
+
+
 
 (general-def read-expression-map "C-j" nil) ; use C-j to new line without evaluation in Eval:

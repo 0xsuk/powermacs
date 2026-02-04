@@ -5,19 +5,37 @@
   (defun my-get-magit-file-path-at-cursor ()
     (magit-diff--file))
   
-  (defun my-copy-file-reference ()
-    (interactive)
-    (let* ((magit-p (my-is-magit-derived-p major-mode))
-           (file-path (if magit-p (my-get-magit-file-path-at-cursor)
-                        (buffer-file-name))))
-      (if file-path
-          (progn
-            (kill-new (format "@%s" file-path))
-            (message "copied: %s" file-path))
-        (message "not a file")
-        )
-      )
-    )
+(defun my-copy-file-reference ()
+  (interactive)
+  (let* ((magit-p (my-is-magit-derived-p major-mode))
+         (file-path
+          (if magit-p
+              (my-get-magit-file-path-at-cursor)
+            (buffer-file-name)))
+         (project-root (projectile-project-root))
+         (line (line-number-at-pos)))
+    (if (and file-path project-root)
+        (let* ((rel-path (file-relative-name file-path project-root))
+               (ref
+                ;; (format "@%s " rel-path)
+                (format "@%s:%d " rel-path line)    
+
+                    ))
+          (kill-new ref)
+          (message "copied: %s" ref))
+      (message "not a file or not in projectile project"))))
+
+(defun my-open-vscode ()
+  "openvscodeinprojectile root"
+  (interactive)
+  (let ((project-root (and (fboundp 'projectile-project-root)
+                           (projectile-project-root))))
+    (if project-root
+        (let ((default-directory project-root))
+          (shell-command "code -r . &"))
+      (message "not in projectile project")))
+  )
+
 
 (defun get-buf-and-point-in-magit-diff ()
   (magit-diff-visit-file--noselect (and magit-diff-visit-prefer-worktree
