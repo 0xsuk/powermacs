@@ -16,8 +16,8 @@
 					shell-mode
 					"^\\*shell.*\\*$"
 					;; dired-mode
-					help-mode
-					helpful-mode
+					;; help-mode
+					;; helpful-mode
 					sly-db-mode ; sly debug mode
 					"^\\*sly-db.*"
           "^\\*sly-traces.*"
