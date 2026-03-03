@@ -1,6 +1,6 @@
 
 <img width="633" height="367" alt="image" src="https://github.com/user-attachments/assets/41406add-da5e-4c72-915e-611025278806" />
-<img width="2545" height="1403" alt="image" src="https://github.com/user-attachments/assets/9d011ccd-1c39-4aa0-ae22-43cf3d8cbc36" />
+<img width="1857" height="1210" alt="image" src="https://github.com/user-attachments/assets/49177cb3-71da-4c10-9d45-00200f03cdb5" />
 
 
 ## install
