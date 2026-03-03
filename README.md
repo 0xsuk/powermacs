@@ -1,4 +1,5 @@
-![powermacs](powermacs.gif)
+
+<img width="633" height="367" alt="image" src="https://github.com/user-attachments/assets/41406add-da5e-4c72-915e-611025278806" />
 
 
 ## install
